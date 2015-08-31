@@ -24,7 +24,7 @@ module.exports = function(mediator) {
       var workorder = _.find(workorders, function(_workorder) {
         return _workorder.id == id;
       });
-      mediator.publish('workorder:loaded', workorder);
+      mediator.publish('workorder:loaded:' + id, workorder);
     }, 0);
   });
 }
