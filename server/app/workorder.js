@@ -27,4 +27,15 @@ module.exports = function(mediator) {
       mediator.publish('workorder:loaded:' + id, workorder);
     }, 0);
   });
+
+  mediator.subscribe('workorder:save', function(workorder) {
+    setTimeout(function() {
+      var index = _.findIndex(workorders, function(_workorder) {
+        return _workorder.id == workorder.id;
+      });
+      workorders[index] = workorder;
+      console.log('Saved workorder:', workorder);
+      mediator.publish('workorder:saved:' + workorder.id, workorder);
+    }, 0);
+  });
 }

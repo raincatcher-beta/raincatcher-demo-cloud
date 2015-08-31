@@ -5,10 +5,12 @@ var express = require('express')
   , config = require('./config')
   , middle = require('./middleware')
   , mediator = require('wfm-mediator/mediator')
+  , bodyParser = require('body-parser')
   ;
 
 app.set('port', config.get('PORT'));
 app.set('base url', config.get('IP'));
+app.use(bodyParser.json());
 app.use(middle.cors);
 
 app.use(express.static(__dirname + '/../portal'));
