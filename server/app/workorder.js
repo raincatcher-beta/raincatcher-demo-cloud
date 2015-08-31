@@ -13,18 +13,18 @@ var workorders = [
 
 module.exports = function(mediator) {
   console.log('Subscribing to mediator topic: workorders:load');
-  mediator.subscribe('workorders:load', this, function() {
+  mediator.subscribe('workorders:load', function() {
     setTimeout(function() {
-      mediator.publish('workorders:loaded', this, workorders);
+      mediator.publish('workorders:loaded', workorders);
     }, 0);
   });
 
-  mediator.subscribe('workorder:load', this, function(id) {
+  mediator.subscribe('workorder:load', function(id) {
     setTimeout(function() {
       var workorder = _.find(workorders, function(_workorder) {
         return _workorder.id == id;
       });
-      mediator.publish('workorder:loaded', this, workorder);
+      mediator.publish('workorder:loaded', workorder);
     }, 0);
   });
 }
