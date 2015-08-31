@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('lodash');
+
 var workorders = [
   { id: 1276001, type: 'Job Order', title: 'Footpath in disrepair', status: 'In Progress', address: '118 N Peoria @N Chicago, IL 60607', summary: 'Please remove damaged kerb and SUPPLY AND FIX 1X DROP KERB CENTRE BN 125 X 150 cart away from site outside number 3.'},
   { id: 1276231, type: 'Job Order', title: 'Road in disrepair', status: 'Complete', address: '2116 Sussex Dr. @Redmond, WA 60607', summary: 'Please remove damaged kerb and SUPPLY AND FIX 1X DROP KERB CENTRE BN 125 X 150 cart away from site outside number 3.'},
@@ -14,6 +16,15 @@ module.exports = function(mediator) {
   mediator.subscribe('workorders:load', this, function() {
     setTimeout(function() {
       mediator.publish('workorders:loaded', this, workorders);
+    }, 0);
+  });
+
+  mediator.subscribe('workorder:load', this, function(id) {
+    setTimeout(function() {
+      var workorder = _.find(workorders, function(_workorder) {
+        return _workorder.id == id;
+      });
+      mediator.publish('workorder:loaded', this, workorder);
     }, 0);
   });
 }
