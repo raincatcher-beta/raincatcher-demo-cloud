@@ -25,6 +25,7 @@ app.use('/api', router);
 
 // setup the wfm routes
 require('wfm-workorder/router')(mediator, app);
+require('wfm-workflow/router')(mediator, app);
 
 // error handling
 app.use(middle.logError);
