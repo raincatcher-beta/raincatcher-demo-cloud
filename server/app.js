@@ -33,5 +33,6 @@ app.use(middle.handleError);
 
 // app modules
 require('./app/workorder')(mediator);
+require('./app/workflow')(mediator);
 
 module.exports = exports = app;
