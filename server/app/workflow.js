@@ -14,7 +14,7 @@ var steps = [
     view: '<vehicle-inspection value="workorder.vehicleInspection"></vehicle-inspection>'
   }},
   {code: 'workflow-complete', name: 'Workflow Complete', templates: {
-    form: '<workflow-step-summary workorder="workorder"></workflow-step-summary>',
+    form: '<workflow-step-summary workorder="workorder" steps="steps"></workflow-step-summary>',
     view: ''
   }}
 ];
