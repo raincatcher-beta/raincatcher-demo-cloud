@@ -38,4 +38,13 @@ module.exports = function(mediator) {
       mediator.publish('workorder:saved:' + workorder.id, workorder);
     }, 0);
   });
+
+  mediator.subscribe('workorder:create', function(workorder) {
+    setTimeout(function() {
+      workorder.id = workorders.length;
+      workorders.push(workorder);
+      console.log('Created workorder:', workorder);
+      mediator.publish('workorder:created:' + workorder.createdTs, workorder);
+    }, 0);
+  });
 }
