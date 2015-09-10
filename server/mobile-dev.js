@@ -14,6 +14,10 @@ app.set('port', port);
 app.set('base url', ip);
 app.use(express.static(__dirname + '/../www'));
 
+app.get('/cordova.js', function(req, res) {
+  res.send("");
+})
+
 var server = http.createServer(app);
 server.listen(port, ip);
 console.log('Serving www/ on ' + ip + ':' + port);
