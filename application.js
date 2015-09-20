@@ -1,6 +1,6 @@
 'use strict';
 
-var app   = require('./app.js')
+var app   = require('./server/app.js')
   , http = require('http')
   , port  = app.get('port')
   , ip = app.get('base url')
