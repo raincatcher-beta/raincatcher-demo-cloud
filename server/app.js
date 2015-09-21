@@ -25,8 +25,8 @@ var router = express.Router();
 app.use('/api', router);
 
 // setup the wfm routes
-require('wfm-workorder/router')(mediator, app);
-require('wfm-workflow/router')(mediator, app);
+require('fh-wfm-workorder/router')(mediator, app);
+require('fh-wfm-workflow/router')(mediator, app);
 
 // app modules
 require('./app/workorder')(mediator);
