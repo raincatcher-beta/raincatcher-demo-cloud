@@ -25,11 +25,11 @@
     "fh-mbaas-api": "^5.3.1",
     "lodash": "^3.10.1",
     "q": "^1.4.1",
-    "wfm-mediator": "git+ssh://git@github.com/feedhenry-staff/wfm-mediator.git",
-    "wfm-risk-assessment": "git+ssh://git@github.com/feedhenry-staff/wfm-risk-assessment.git",
-    "wfm-vehicle-inspection": "git+ssh://git@github.com/feedhenry-staff/wfm-vehicle-inspection.git",
-    "wfm-workflow": "git+ssh://git@github.com/feedhenry-staff/wfm-workflow.git",
-    "wfm-workorder": "git+ssh://git@github.com/feedhenry-staff/wfm-workorder.git"
+    "fh-wfm-mediator": "~0.0.1",
+    "fh-wfm-risk-assessment": "~0.0.1",
+    "fh-wfm-vehicle-inspection": "~0.0.1",
+    "fh-wfm-workflow": "~0.0.1",
+    "fh-wfm-workorder": "~0.0.1"
   },
   "devDependencies": {
     "nodemon": "^1.4.0"

@@ -6,7 +6,7 @@ var mbaasApi = require('fh-mbaas-api')
   , mbaasExpress = mbaasApi.mbaasExpress()
   , config = require('./config')
   , middle = require('./middleware')
-  , mediator = require('wfm-mediator/mediator')
+  , mediator = require('fh-wfm-mediator/mediator')
   , bodyParser = require('body-parser')
   ;
 
