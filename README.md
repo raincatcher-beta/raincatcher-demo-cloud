@@ -8,6 +8,8 @@ This is the 'WFM' FeedHenry MBaaS.
 
 'Workorder' endpoint.
 
+## workorder [GET]
+
 ## workorder [POST]
 
 'Workorder' endpoint.
