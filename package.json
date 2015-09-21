@@ -19,7 +19,6 @@
   "author": "Brian Leathem",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.13.3",
     "config-chain": "^1.1.9",
     "express": "^4.13.2",
     "fh-mbaas-api": "^5.3.1",

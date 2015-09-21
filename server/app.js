@@ -7,7 +7,6 @@ var mbaasApi = require('fh-mbaas-api')
   , config = require('./config')
   , middle = require('./middleware')
   , mediator = require('fh-wfm-mediator/mediator')
-  , bodyParser = require('body-parser')
   ;
 
 var securableEndpoints = [];
@@ -20,8 +19,6 @@ app.use('/sys', mbaasExpress.sys(securableEndpoints));
 app.use('/mbaas', mbaasExpress.mbaas);
 
 app.use(mbaasExpress.fhmiddleware());
-
-// app.use(bodyParser.json({limit: '10mb'}));
 
 // app specific router
 var router = express.Router();
