@@ -9,9 +9,7 @@
   },
   "main": "application.js",
   "scripts": {
-    "start": "node application.js",
-    "watch": "nodemon -w server application.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "grunt serve"
   },
   "keywords": [
     "wfm"
@@ -20,6 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "config-chain": "^1.1.9",
+    "cors": "^2.7.1",
     "express": "^4.13.2",
     "fh-mbaas-api": "^5.3.1",
     "fh-wfm-mediator": "~0.0.4",
@@ -28,9 +27,24 @@
     "fh-wfm-workflow": "~0.0.7",
     "fh-wfm-workorder": "~0.0.7",
     "lodash": "^3.10.1",
-    "q": "^1.4.1"
+    "mocha": "^2.1.0",
+    "q": "^1.4.1",
+    "request": "~2.40.0"
   },
   "devDependencies": {
-    "nodemon": "^1.4.0"
+    "grunt-contrib-watch": "latest",
+    "grunt-nodemon": "0.2.0",
+    "grunt-concurrent": "latest",
+    "supertest": "0.8.2",
+    "should": "2.1.1",
+    "proxyquire": "0.5.3",
+    "grunt-shell": "0.6.4",
+    "istanbul": "0.2.7",
+    "grunt-env": "~0.4.1",
+    "load-grunt-tasks": "~0.4.0",
+    "time-grunt": "~0.3.1",
+    "grunt-node-inspector": "~0.1.5",
+    "grunt-open": "~0.2.3",
+    "grunt-plato": "~1.0.0"
   }
 }
