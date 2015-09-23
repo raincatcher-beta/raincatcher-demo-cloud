@@ -17,6 +17,7 @@
   "author": "Brian Leathem",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.14.0",
     "config-chain": "^1.1.9",
     "cors": "^2.7.1",
     "express": "^4.13.2",
