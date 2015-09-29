@@ -47,6 +47,7 @@ module.exports = function(grunt) {
       options : {},
       // environment variables - see https://github.com/jsoverson/grunt-env for more information
       local: {
+        src: "gamma.env",
         FH_USE_LOCAL_DB: true,
         FH_SERVICE_MAP: function() {
           /*
@@ -119,11 +120,11 @@ module.exports = function(grunt) {
     open: {
       debug: {
         path: 'http://127.0.0.1:8080/debug?port=5858',
-        app: 'Google Chrome'
+        app: 'google-chrome'
       },
       platoReport: {
         path: './plato/index.html',
-        app: 'Google Chrome'
+        app: 'google-chrome'
       }
     },
     plato: {
