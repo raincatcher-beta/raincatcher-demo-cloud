@@ -1,0 +1,26 @@
+{
+  "name": "fh-wfm-sync",
+  "version": "0.0.11",
+  "description": "An sync module for WFM",
+  "main": "sync.js",
+  "scripts": {
+  },
+  "keywords": [
+    "wfm",
+    "sync"
+  ],
+  "author": "Sebastien Blanc, Brian Leathem",
+  "license": "Copyright (c) 2015 FeedHenry Ltd, All Rights Reserved.",
+  "dependencies": {
+    "express": "^4.13.3",
+    "lodash": "^3.10.1",
+    "q": "^1.4.1"
+  },
+  "devDependencies": {
+    "body-parser": "^1.13.3",
+    "mocha": "^2.2.5",
+    "request": "^2.61.0",
+    "should": "^7.0.4",
+    "fh-wfm-mediator": ">=0.0.6"
+  }
+}
