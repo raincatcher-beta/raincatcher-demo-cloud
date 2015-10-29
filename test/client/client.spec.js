@@ -9,12 +9,12 @@ var sync = require('../../lib/sync-client')($fh);
 window.fh_app_props = require('../lib/fhconfig.json');
 
 describe('Test the sync framework', function() {
-  before(function(done) {
-    sync.init();
+  before(function() {
+    var promise = sync.init();
     $fh.sync.notify(function(event) {
-      console.log('**** sync event', event);
+      console.log('**** sync event ****\n', event);
     });
-    done();
+    return promise;
   });
 
   it('Does it blow up?', function() {
