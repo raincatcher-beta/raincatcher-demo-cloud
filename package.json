@@ -4,6 +4,12 @@
   "description": "An sync module for WFM",
   "main": "sync.js",
   "scripts": {
+    "watch": "mochify --watch test/client/**/*.spec.js",
+    "debug": "mochify --debug test/client/**/*.spec.js",
+    "phantom": "mochify test/client/**/*.spec.js",
+    "wd": "mochify --wd test/client/**/*.spec.js",
+    "cover": "mochify --cover test/client/**/*.spec.js",
+    "test": "npm run phantom && npm run wd && npm run cover"
   },
   "keywords": [
     "wfm",
@@ -13,14 +19,13 @@
   "license": "Copyright (c) 2015 FeedHenry Ltd, All Rights Reserved.",
   "dependencies": {
     "express": "^4.13.3",
+    "fh-mbaas-api": "^5.3.5",
     "lodash": "^3.10.1",
     "q": "^1.4.1"
   },
   "devDependencies": {
-    "body-parser": "^1.13.3",
-    "mocha": "^2.2.5",
-    "request": "^2.61.0",
-    "should": "^7.0.4",
-    "fh-wfm-mediator": ">=0.0.6"
+    "async": "^1.5.0",
+    "fh-wfm-mediator": ">=0.0.6",
+    "mochify": "^2.14.0"
   }
 }
