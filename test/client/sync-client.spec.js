@@ -4,6 +4,7 @@ debugger;
 var $fh = require('../lib/feedhenry')
   , should = require('should')
   , config = require('../test-config')
+  , mediator = require('fh-wfm-mediator/mediator')
   , sync = require('../../lib/sync-client')
 
 // alternative to loading fhconfig via xhr
@@ -13,6 +14,7 @@ describe('Test the sync framework', function() {
   before(function() {
     sync.init($fh, config.datasetId, config.syncOptions);
     return sync.start().then(function() {
+      console.log('**** start complete ****');
       $fh.sync.notify(function(event) {
         console.log('**** sync event ****\n', event);
       });

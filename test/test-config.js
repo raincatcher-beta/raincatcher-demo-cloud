@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  datasetId : 'test-workOrdersList',
+  datasetId : 'test-dataset',
   syncOptions : {
     "sync_frequency" : 5,
     "storage_strategy": "dom",
