@@ -2,19 +2,21 @@
 
 debugger;
 var $fh = require('../lib/feedhenry')
-var should = require('should');
-var sync = require('../../lib/sync-client')($fh);
+  , should = require('should')
+  , config = require('../test-config')
+  , sync = require('../../lib/sync-client')
 
 // alternative to loading fhconfig via xhr
 window.fh_app_props = require('../lib/fhconfig.json');
 
 describe('Test the sync framework', function() {
   before(function() {
-    var promise = sync.init();
-    $fh.sync.notify(function(event) {
-      console.log('**** sync event ****\n', event);
+    sync.init($fh, config.datasetId, config.syncOptions);
+    return sync.start().then(function() {
+      $fh.sync.notify(function(event) {
+        console.log('**** sync event ****\n', event);
+      });
     });
-    return promise;
   });
 
   it('Does it blow up?', function() {

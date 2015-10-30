@@ -6,6 +6,7 @@ var mbaasApi = require('fh-mbaas-api')
   , cors = require('cors')
   , mediator = require('fh-wfm-mediator/mediator')
   , http = require('http')
+  , config = require('./test-config')
   ;
 
 var config = cc({}).add({
@@ -32,7 +33,7 @@ app.use(mbaasExpress.fhmiddleware());
 // fhlint-begin: custom-routes
 
 // setup the sync
-require('../server')(mediator, app, mbaasApi);
+require('../sync-server')(mediator, mbaasApi, config.datasetId, config.syncOptions);
 
 // Important that this is last!
 app.use(mbaasExpress.errorHandler());
