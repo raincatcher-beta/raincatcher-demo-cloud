@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "async": "^1.5.0",
+    "dotenv": "^1.2.0",
     "fh-wfm-mediator": ">=0.0.6",
     "mochify": "^2.14.0"
   }

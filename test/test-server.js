@@ -6,8 +6,10 @@ var mbaasApi = require('fh-mbaas-api')
   , cors = require('cors')
   , mediator = require('fh-wfm-mediator/mediator')
   , http = require('http')
-  , config = require('./test-config')
+  , syncConfig = require('./test-config')
   ;
+
+require('dotenv').config({path: './test/gamma.env'})
 
 var config = cc({}).add({
   IP: process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0'
@@ -33,7 +35,11 @@ app.use(mbaasExpress.fhmiddleware());
 // fhlint-begin: custom-routes
 
 // setup the sync
-require('../sync-server')(mediator, mbaasApi, config.datasetId, config.syncOptions);
+console.log(syncConfig)
+require('../sync-server')(mediator, mbaasApi, syncConfig.datasetId, syncConfig.syncOptions);
+
+// register our object handler
+require('./object-manager')(mediator);
 
 // Important that this is last!
 app.use(mbaasExpress.errorHandler());
