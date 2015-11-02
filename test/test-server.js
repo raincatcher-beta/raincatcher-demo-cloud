@@ -38,7 +38,7 @@ app.use(mbaasExpress.fhmiddleware());
 // fhlint-begin: custom-routes
 
 // setup the sync
-require('../sync-server')(mediator, mbaasApi, syncConfig.datasetId, syncConfig.syncOptions);
+require('../sync-server').init(mediator, mbaasApi, syncConfig.datasetId, syncConfig.syncOptions);
 
 // register our object handler
 require('./object-manager')(mediator);
