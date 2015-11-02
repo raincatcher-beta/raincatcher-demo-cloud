@@ -11,6 +11,8 @@ var mbaasApi = require('fh-mbaas-api')
 
 require('dotenv').config({path: './test/gamma.env'})
 
+console.log(process.env)
+
 var config = cc({}).add({
   IP: process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0'
 , PORT: process.env.FH_PORT || process.env.OPENSHIFT_NODEJS_PORT || 8002

@@ -6,12 +6,13 @@ var $fh = require('../lib/feedhenry')
   , config = require('../test-config')
   , mediator = require('fh-wfm-mediator/mediator')
   , sync = require('../../lib/sync-client')
+  , q = require('q')
 
 // alternative to loading fhconfig via xhr
 window.fh_app_props = require('../lib/fhconfig.json');
 
 describe('Test the sync framework', function() {
-  before(function() {
+  before(function(done) {
     localStorage.clear();
     sync.init($fh, mediator, config.datasetId, config.syncOptions);
     var topic = 'sync:notification:'+config.datasetId;
@@ -19,7 +20,16 @@ describe('Test the sync framework', function() {
       console.log('**** sync event ****\n', event);
     });
     console.log('listening for events on topic:', topic);
-    return sync.start();
+    var deferred = q.defer();
+    sync.start().then(function() {
+      mediator.subscribe('sync:notification:'+config.datasetId, function(notification) {
+        if (notification.code === 'sync_complete') {
+          done();
+        } else if (notification.code === 'sync_failed') {
+          throw new Error('Sync Failed', notification);
+        }
+      });
+    });
   });
 
   it('Does it blow up?', function() {
@@ -28,14 +38,7 @@ describe('Test the sync framework', function() {
 
   it('init the sync', function() {
     debugger;
-    return mediator.promise('sync:notification:'+config.datasetId, {
-      predicate:function(notification) {
-        return notification.code === 'sync_complete';
-      }
-    })
-    .then(function(result) {
-      return sync.list()
-    })
+    return sync.list()
     .then(function(result) {
       console.log('result', result);
       result.should.have.length(1);
