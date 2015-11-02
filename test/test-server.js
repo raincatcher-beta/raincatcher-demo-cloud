@@ -9,17 +9,18 @@ var mbaasApi = require('fh-mbaas-api')
   , syncConfig = require('./test-config')
   ;
 
-require('dotenv').config({path: './test/gamma.env'})
+var app = express()
+  , mbaasExpress = mbaasApi.mbaasExpress()
+  ;
 
-console.log(process.env)
+require('dotenv').config({path: './test/gamma.env'})
+process.env.FH_USE_LOCAL_DB=true;
+// console.log(process.env)
 
 var config = cc({}).add({
   IP: process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0'
 , PORT: process.env.FH_PORT || process.env.OPENSHIFT_NODEJS_PORT || 8002
 });
-
-var app = express()
-  , mbaasExpress = mbaasApi.mbaasExpress();
 
 app.set('port', config.get('PORT'));
 app.set('base url', config.get('IP'));
@@ -37,7 +38,6 @@ app.use(mbaasExpress.fhmiddleware());
 // fhlint-begin: custom-routes
 
 // setup the sync
-console.log(syncConfig)
 require('../sync-server')(mediator, mbaasApi, syncConfig.datasetId, syncConfig.syncOptions);
 
 // register our object handler

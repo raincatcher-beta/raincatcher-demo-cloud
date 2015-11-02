@@ -13,7 +13,16 @@ window.fh_app_props = require('../lib/fhconfig.json');
 
 describe('Test the sync framework', function() {
   before(function(done) {
+    // this.timeout(15000);
     localStorage.clear();
+
+    var fakeNavigator = {};
+    for (var i in navigator) {
+      fakeNavigator[i] = navigator[i];
+    }
+    fakeNavigator.onLine = true;
+    navigator = fakeNavigator;
+
     sync.init($fh, mediator, config.datasetId, config.syncOptions);
     var topic = 'sync:notification:'+config.datasetId;
     mediator.subscribe(topic, function(event) {
@@ -37,20 +46,17 @@ describe('Test the sync framework', function() {
   });
 
   it('init the sync', function() {
-    debugger;
     return sync.list()
     .then(function(result) {
-      console.log('result', result);
-      result.should.have.length(1);
+      result.should.have.length(5);
     })
     .then(function() {
       return sync.create({id:0, value:'test'})
     })
-    // .then(sync.list)
-    // .then(function(result) {
-    //   console.log('result', result);
-    //   result.should.have.length(1);
-    // });
+    .then(sync.list)
+    .then(function(result) {
+      result.should.have.length(6);
+    });
   });
 
 });

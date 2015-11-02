@@ -14,51 +14,50 @@ var objects = [
 ];
 
 module.exports = function(mediator) {
-  var topic;
-  topic = 'sync:'+config.datasetId+':list:load';
-  console.log('Subscribing to topic:', topic);
-  mediator.subscribe(topic, function() {
-    console.log(topic, 'called');
+  var topicList = 'sync:'+config.datasetId+':list:load';
+  console.log('Subscribing to topic:', topicList);
+  mediator.subscribe(topicList, function() {
+    console.log(topicList, 'called');
     setTimeout(function() {
-      mediator.publish('done:'+topic, objects);
+      mediator.publish('done:'+topicList, objects);
     }, 0);
   });
 
-  topic = 'sync:'+config.datasetId+':load';
-  console.log('Subscribing to topic:', topic);
-  mediator.subscribe(topic, function(id) {
-    console.log(topic, 'called');
+  var topicLoad = 'sync:'+config.datasetId+':load';
+  console.log('Subscribing to topic:', topicLoad);
+  mediator.subscribe(topicLoad, function(id) {
+    console.log(topicLoad, 'called');
     setTimeout(function() {
       var object = _.find(objects, function(_object) {
         return _object.id == id;
       });
-      mediator.publish('done:' + topic + ':' + id, object);
+      mediator.publish('done:' + topicLoad + ':' + id, object);
     }, 0);
   });
 
-  topic = 'sync:'+config.datasetId+':save';
-  console.log('Subscribing to topic:', topic);
-  mediator.subscribe(topic, function(object) {
-    console.log(topic, 'called');
+  var topicSave = 'sync:'+config.datasetId+':save';
+  console.log('Subscribing to topic:', topicSave);
+  mediator.subscribe(topicSave, function(object) {
+    console.log(topicSave, 'called');
     setTimeout(function() {
       var index = _.findIndex(objects, function(_object) {
         return _object.id == object.id;
       });
       objects[index] = object;
       console.log('Saved object:', object);
-      mediator.publish('done:' + topic + ':' + object.id, object);
+      mediator.publish('done:' + topicSave + ':' + object.id, object);
     }, 0);
   });
 
-  topic = 'sync:'+config.datasetId+':create';
-  console.log('Subscribing to topic:', topic);
-  mediator.subscribe(topic, function(object, timestamp) {
-    console.log(topic, 'called');
+  var topicCreate = 'sync:'+config.datasetId+':create';
+  console.log('Subscribing to topic:', topicCreate);
+  mediator.subscribe(topicCreate, function(object, timestamp) {
+    console.log(topicCreate, 'called');
     setTimeout(function() {
       object.id = objects.length;
       objects.push(object);
       console.log('Created object:', object);
-      mediator.publish('done:' + topic + ':' + timestamp, object);
+      mediator.publish('done:' + topicCreate + ':' + timestamp, object);
     }, 0);
   });
 }
