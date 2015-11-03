@@ -27,7 +27,7 @@
     "fh-wfm-risk-assessment": "~0.0.2",
     "fh-wfm-vehicle-inspection": "~0.0.2",
     "fh-wfm-workflow": "~0.0.10",
-    "fh-wfm-workorder": "~0.0.11",
+    "fh-wfm-workorder": ">=0.0.12",
     "lodash": "^3.10.1",
     "mocha": "^2.1.0",
     "q": "^1.4.1",
