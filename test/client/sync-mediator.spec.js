@@ -55,8 +55,7 @@ describe('Test the sync via mediator', function() {
 
     it('create works.', function() {
       var ts = new Date().getTime();
-      mediator.publish('sync:'+config.datasetId+':create', {id:1, value:'test1'}, ts);
-      return mediator.promise('done:sync:'+config.datasetId+':create:'+ts)
+      return mediator.request('sync:'+config.datasetId+':create', [{id:1, value:'test1'}, ts], {uid: ts})
       .then(function() {
         return mediator.request('sync:'+config.datasetId+':list:load')
       })
