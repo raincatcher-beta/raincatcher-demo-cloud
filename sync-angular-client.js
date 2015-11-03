@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./lib/ng-modules/sync-mediator');
+module.exports = require('./lib/wrappers/sync-angular');
