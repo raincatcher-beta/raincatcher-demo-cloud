@@ -47,8 +47,9 @@ describe('Test the sync framework', function() {
       sync.eventBridge(mediator);
       sync.manage(config.datasetId).then(function(_manager) {
         manager = _manager;
-        mediator.subscribe('sync:notification:'+config.datasetId, function(notification) {
+        var sub = mediator.subscribe('sync:notification:'+config.datasetId, function(notification) {
           if (notification.code === 'sync_complete') {
+            mediator.remove('sync:notification:'+config.datasetId, sub.id);
             done();
           } else if (notification.code === 'sync_failed') {
             throw new Error('Sync Failed', notification);
