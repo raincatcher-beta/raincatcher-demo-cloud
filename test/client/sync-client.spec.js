@@ -27,7 +27,7 @@ describe('Test the sync framework', function() {
     oldNavigator = navigator;
     navigator = fakeNavigator;
 
-    sync.init($fh, config.syncOptions);
+    sync.init($fh, mediator, config.syncOptions);
   });
 
   after(function() {
@@ -44,7 +44,6 @@ describe('Test the sync framework', function() {
       });
       console.log('listening for events on topic:', topic);
       var deferred = q.defer();
-      sync.eventBridge(mediator);
       sync.manage(config.datasetId).then(function(_manager) {
         manager = _manager;
         var sub = mediator.subscribe('sync:notification:'+config.datasetId, function(notification) {
@@ -62,22 +61,45 @@ describe('Test the sync framework', function() {
       mediator.remove(topic, subscription.id);
     });
 
-    it('nothing blows up.', function() {
-      "true".should.be.equal("true");
+    it('nothing blows up', function() {
+      'true'.should.be.equal('true');
     });
 
-    it('list result is correct.', function() {
+    it('list result is correct', function() {
       return manager.list()
       .then(function(result) {
         result.should.have.length(5);
       })
     });
 
-    it('create works.', function() {
-      return manager.create({id:0, value:'test'})
-      .then(manager.list.bind(manager))
+    it('create works', function() {
+      this.timeout(15000);
+      return manager.create({id:10, value:'test'})
+      .then(function(created) {
+        created.value.should.equal('test')
+        return manager.read(created.id);
+      })
+      .then(function(result) {
+        result.value.should.equal('test');
+        return manager.list();
+      })
       .then(function(result) {
         result.should.have.length(6);
+      });
+    });
+
+    it('update works', function() {
+      return manager.read(1262134)
+      .then(function(result) {
+        result.value = 'test2';
+        return manager.update(result)
+      })
+      .then(function(updatedResult) {
+        updatedResult.value.should.equal('test2');
+        return manager.read(1262134);
+      })
+      .then(function(result) {
+        result.value.should.equal('test2');
       });
     });
   });

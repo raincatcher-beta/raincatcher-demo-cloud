@@ -13,7 +13,7 @@ var $fh = require('../lib/feedhenry')
 window.fh_app_props = require('../lib/fhconfig.json');
 
 describe('Test the sync via mediator', function() {
-  var oldNavigator, bridge;
+  var oldNavigator;
 
   before(function() {
     localStorage.clear();
@@ -43,7 +43,7 @@ describe('Test the sync via mediator', function() {
     });
 
     it('nothing blows up.', function() {
-      "true".should.be.equal("true");
+      'true'.should.be.equal('true');
     });
 
     it('list result is correct.', function() {
