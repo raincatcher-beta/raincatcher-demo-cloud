@@ -18,8 +18,6 @@
   "author": "Sebastien Blanc, Brian Leathem",
   "license": "Copyright (c) 2015 FeedHenry Ltd, All Rights Reserved.",
   "dependencies": {
-    "express": "^4.13.3",
-    "fh-mbaas-api": "^5.3.5",
     "lodash": "^3.10.1",
     "q": "^1.4.1"
   },
@@ -28,6 +26,8 @@
     "config-chain": "^1.1.9",
     "cors": "^2.7.1",
     "dotenv": "^1.2.0",
+    "express": "^4.13.3",
+    "fh-mbaas-api": "^5.3.5",
     "fh-wfm-mediator": ">=0.0.7",
     "mochify": "^2.14.0",
     "should": "^7.1.1"
