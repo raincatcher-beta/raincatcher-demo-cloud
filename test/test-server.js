@@ -36,6 +36,11 @@ app.use('/mbaas', mbaasExpress.mbaas);
 app.use(mbaasExpress.fhmiddleware());
 
 // fhlint-begin: custom-routes
+app.use('/box/srv/1.1/app/init', function(req, res) { // specify the cloud host URL invoked by $fh init
+  res.json({
+    hosts: {url: 'http://localhost:8002'}
+  });
+});
 
 // setup the sync
 require('../sync-server').init(mediator, mbaasApi, syncConfig.datasetId, syncConfig.syncOptions);
