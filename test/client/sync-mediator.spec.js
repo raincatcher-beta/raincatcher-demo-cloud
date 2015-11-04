@@ -69,6 +69,21 @@ describe('Test the sync via mediator', function() {
       });
     });
 
+    it('update works.', function() {
+      return mediator.request('sync:'+datasetId+':read', 1262134)
+      .then(function(object) {
+        object.value = 'xyz';
+        return mediator.request('sync:'+datasetId+':update', object, {uid: object.id});
+      })
+      .then(function(updated) {
+        updated.value.should.equal('xyz');
+        return mediator.request('sync:'+datasetId+':read', 1262134)
+      })
+      .then(function(result) {
+        result.value.should.equal('xyz');
+      });
+    });
+
     it('delete works.', function() {
       return mediator.request('sync:'+datasetId+':read', '1262134')
       .then(function(object) {
