@@ -8,12 +8,13 @@ syncTestHelper.startLoggingNotifications = function(mediator, datasetId) {
   var subscription = mediator.subscribe(topic, function(event) {
     console.log('\x1b[36m%s\x1b[0m', '** sync event:', event.dataset_id, ':', event.code, ':',  event.message);
   });
-  console.log('listening for events on topic:', topic);
+  console.log('Listening for events on topic:', topic);
 }
 
 syncTestHelper.stopLoggingNotifications = function(mediator, datasetId) {
   var topic = 'sync:notification:'+datasetId;
   mediator.remove(topic);
+  console.log('Stopped listnering for events on topic:', topic);
 }
 
 syncTestHelper.syncServerReset = function($fh) {

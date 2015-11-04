@@ -68,5 +68,19 @@ describe('Test the sync via mediator', function() {
         result.should.have.length(7);
       });
     });
+
+    it('delete works.', function() {
+      return mediator.request('sync:'+datasetId+':read', '1262134')
+      .then(function(object) {
+        return mediator.request('sync:'+datasetId+':delete', object, {uid: object.id});
+      })
+      .then(function(msg) {
+        msg.should.equal('delete');
+        return mediator.request('sync:'+datasetId+':list:load')
+      })
+      .then(function(result) {
+        result.should.have.length(6);
+      });
+    });
   });
 });

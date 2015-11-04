@@ -87,5 +87,20 @@ describe('Test the sync framework', function() {
         result.value.should.equal('test2');
       });
     });
+
+    it('delete works', function() {
+      return manager.read(1262134)
+      .then(function(result) {
+        result.value = 'test2';
+        return manager.delete(result)
+      })
+      .then(function(msg) {
+        msg.should.equal('delete');
+        return manager.list();
+      })
+      .then(function(result) {
+        result.should.have.length(6);
+      });
+    });
   });
 });
