@@ -52,7 +52,7 @@ describe('Test the sync via mediator', function() {
     });
 
     it('list result is correct.', function() {
-      return mediator.request('sync:'+datasetId+':list:load')
+      return mediator.request('sync:'+datasetId+':list')
       .then(function(result) {
         result.should.have.length(6);
       })
@@ -62,7 +62,7 @@ describe('Test the sync via mediator', function() {
       var ts = new Date().getTime();
       return mediator.request('sync:'+datasetId+':create', [{id:1, value:'test-mediator'}, ts], {uid: ts})
       .then(function() {
-        return mediator.request('sync:'+datasetId+':list:load')
+        return mediator.request('sync:'+datasetId+':list')
       })
       .then(function(result) {
         result.should.have.length(7);
@@ -76,7 +76,7 @@ describe('Test the sync via mediator', function() {
       })
       .then(function(msg) {
         msg.should.equal('delete');
-        return mediator.request('sync:'+datasetId+':list:load')
+        return mediator.request('sync:'+datasetId+':list')
       })
       .then(function(result) {
         result.should.have.length(6);
