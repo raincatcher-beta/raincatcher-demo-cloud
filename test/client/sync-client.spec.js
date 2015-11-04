@@ -7,58 +7,44 @@ var $fh = require('../lib/feedhenry')
   , mediator = require('fh-wfm-mediator/mediator')
   , sync = require('../../lib/sync-client')
   , q = require('q')
+  , syncTestHelper = require('./test-helper')
   ;
+
+var datasetId = 'sync-client-dataset';
 
 // alternative to loading fhconfig via xhr
 window.fh_app_props = require('../lib/fhconfig.json');
 
 describe('Test the sync framework', function() {
-  var oldNavigator;
-
   before(function() {
     localStorage.clear();
+    syncTestHelper.overrideNavigator();
 
-    // Overide window.navigator.onLine to make sync work
-    var fakeNavigator = {};
-    for (var i in navigator) {
-      fakeNavigator[i] = navigator[i];
-    }
-    fakeNavigator.onLine = true;
-    oldNavigator = navigator;
-    navigator = fakeNavigator;
-
-    sync.init($fh, mediator, config.syncOptions);
+    return syncTestHelper.syncServerInit($fh, datasetId).then(function() {
+      return sync.init($fh, mediator, config.syncOptions);
+    })
   });
 
   after(function() {
-    navigator = oldNavigator;
+    return syncTestHelper.syncServerStop($fh, datasetId).then(function() {
+      syncTestHelper.restoreNavigator();
+    });
   });
 
   describe('Single dataset', function() {
     var manager, topic, subscription;
 
-    before(function(done) {
-      topic = 'sync:notification:'+config.datasetId;
-      subscription = mediator.subscribe(topic, function(event) {
-        console.log('\x1b[36m%s\x1b[0m', '** sync event:', event.dataset_id, ':', event.code, ':',  event.message);
-      });
-      console.log('listening for events on topic:', topic);
-      var deferred = q.defer();
-      sync.manage(config.datasetId).then(function(_manager) {
+    before(function() {
+      syncTestHelper.startLoggingNotifications(mediator, datasetId);
+      return sync.manage(datasetId).then(function(_manager) {
         manager = _manager;
-        var sub = mediator.subscribe('sync:notification:'+config.datasetId, function(notification) {
-          if (notification.code === 'sync_complete') {
-            mediator.remove('sync:notification:'+config.datasetId, sub.id);
-            done();
-          } else if (notification.code === 'sync_failed') {
-            throw new Error('Sync Failed', notification);
-          }
-        });
+        return syncTestHelper.waitForSyncComplete(mediator, datasetId);
       });
     });
 
     after(function() {
-      mediator.remove(topic, subscription.id);
+      syncTestHelper.stopLoggingNotifications(mediator, datasetId);
+      return manager.stop();
     });
 
     it('nothing blows up', function() {
@@ -68,23 +54,22 @@ describe('Test the sync framework', function() {
     it('list result is correct', function() {
       return manager.list()
       .then(function(result) {
-        result.should.have.length(5);
+        result.should.have.length(6);
       })
     });
 
     it('create works', function() {
-      this.timeout(15000);
-      return manager.create({id:10, value:'test'})
+      return manager.create({id:10, value:'test-client'})
       .then(function(created) {
-        created.value.should.equal('test')
+        created.value.should.equal('test-client')
         return manager.read(created.id);
       })
       .then(function(result) {
-        result.value.should.equal('test');
+        result.value.should.equal('test-client');
         return manager.list();
       })
       .then(function(result) {
-        result.should.have.length(6);
+        result.should.have.length(7);
       });
     });
 

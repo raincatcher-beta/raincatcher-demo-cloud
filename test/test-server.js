@@ -42,11 +42,49 @@ app.use('/box/srv/1.1/app/init', function(req, res) { // specify the cloud host 
   });
 });
 
-// setup the sync
-require('../sync-server').init(mediator, mbaasApi, syncConfig.datasetId, syncConfig.syncOptions);
-
 // register our object handler
-require('./object-manager')(mediator);
+var ObjectManager = require('./object-manager');
+var managers = {};
+
+// setup the sync
+var sync = require('../sync-server');
+
+app.get('/sync/init/:datasetId', function(req, res) {
+  var datasetId = req.params.datasetId;
+  managers[datasetId] = new ObjectManager(mediator, datasetId);
+  sync.init(mediator, mbaasApi, datasetId, syncConfig.syncOptions)
+  .then(function() {
+    res.send();
+  });
+})
+
+app.get('/sync/stop/:datasetId', function(req, res, next) {
+  var datasetId = req.params.datasetId;
+  console.log('\x1b[35m%s\x1b[0m', 'Stopping sync for:', datasetId);
+  sync.stop(mbaasApi, datasetId)
+  .then(function() {
+    try {
+      managers[datasetId].unsubscribe();
+      delete managers[datasetId];
+      res.send();
+    } catch(e) {
+      next(e)
+    }
+  });
+})
+
+app.get('/sync/reset/:datasetId', function(req, res) {
+  var datasetId = req.params.datasetId;
+  console.log('\x1b[35m%s\x1b[0m', 'Starting sync for:', datasetId);
+  sync.stop(mbaasApi, datasetId)
+  .then(function() {
+    managers[datasetId].reset();
+    return sync.init(mediator, mbaasApi, datasetId, syncConfig.syncOptions);
+  })
+  .then(function() {
+    res.send();
+  })
+});
 
 // Important that this is last!
 app.use(mbaasExpress.errorHandler());
