@@ -60,7 +60,7 @@ describe('Test the sync via mediator', function() {
 
     it('create works.', function() {
       var ts = new Date().getTime();
-      return mediator.request('sync:'+datasetId+':create', [{id:1, value:'test-mediator'}, ts], {uid: ts})
+      return mediator.request('sync:'+datasetId+':create', [{value:'test-mediator'}, ts], {uid: ts})
       .then(function() {
         return mediator.request('sync:'+datasetId+':list')
       })

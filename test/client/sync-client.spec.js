@@ -82,7 +82,6 @@ describe('Test the sync framework', function() {
         should.not.exist(created.id);
         created.value.should.equal('test-client');
         return remoteCreatePromise.then(function(notification) {
-          console.log(notification);
           return created;
         });
       })
@@ -93,7 +92,6 @@ describe('Test the sync framework', function() {
         });
       })
       .then(function(created) {
-        console.log(created);
         should.exist(created.id);
         created.value.should.equal('test-client');
         created.id.should.equal(6);
