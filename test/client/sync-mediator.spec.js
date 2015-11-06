@@ -8,6 +8,7 @@ var $fh = require('../lib/feedhenry')
   , sync = require('../../lib/wrappers/sync-mediator')(mediator)
   , q = require('q')
   , syncTestHelper = require('./test-helper')
+  , testData = require('../test-data');
   ;
 
 var datasetId = 'sync-mediator-dataset';
@@ -54,7 +55,7 @@ describe('Test the sync via mediator', function() {
     it('list result is correct.', function() {
       return mediator.request('sync:'+datasetId+':list')
       .then(function(result) {
-        result.should.have.length(6);
+        result.should.have.length(testData.length);
       })
     });
 
@@ -65,7 +66,7 @@ describe('Test the sync via mediator', function() {
         return mediator.request('sync:'+datasetId+':list')
       })
       .then(function(result) {
-        result.should.have.length(7);
+        result.should.have.length(testData.length+1);
       });
     });
 
@@ -94,7 +95,7 @@ describe('Test the sync via mediator', function() {
         return mediator.request('sync:'+datasetId+':list')
       })
       .then(function(result) {
-        result.should.have.length(6);
+        result.should.have.length(testData.length);
       });
     });
   });

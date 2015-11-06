@@ -8,6 +8,7 @@ var $fh = require('../lib/feedhenry')
   , sync = require('../../lib/sync-client')
   , q = require('q')
   , syncTestHelper = require('./test-helper')
+  , testData = require('../test-data');
   ;
 
 var datasetId = 'sync-client-dataset';
@@ -54,7 +55,7 @@ describe('Test the sync framework', function() {
     it('list result is correct', function() {
       return manager.list()
       .then(function(result) {
-        result.should.have.length(6);
+        result.should.have.length(testData.length);
       })
     });
 
@@ -94,16 +95,16 @@ describe('Test the sync framework', function() {
       .then(function(created) {
         should.exist(created.id);
         created.value.should.equal('test-client');
-        created.id.should.equal(6);
+        created.id.should.equal(testData.length);
         return manager.read(created.id);
       })
       .then(function(created) {
         created.value.should.equal('test-client');
-        created.id.should.equal(6);
+        created.id.should.equal(testData.length);
         return manager.list();
       })
       .then(function(result) {
-        result.should.have.length(7);
+        result.should.have.length(testData.length + 1);
       });
     });
 
@@ -133,7 +134,7 @@ describe('Test the sync framework', function() {
         return manager.list();
       })
       .then(function(result) {
-        result.should.have.length(6);
+        result.should.have.length(testData.length);
       });
     });
   });
