@@ -1,21 +1,21 @@
 'use strict';
 
+require('dotenv').config({path: './test/server/gamma.env'})
+process.env.FH_USE_LOCAL_DB=true;
+// console.log(process.env)
+
 var mbaasApi = require('fh-mbaas-api')
   , express = require('express')
   , cc = require('config-chain')
   , cors = require('cors')
   , mediator = require('fh-wfm-mediator/mediator')
   , http = require('http')
-  , syncConfig = require('./test-config')
+  , syncConfig = require('../test-config')
   ;
 
 var app = express()
   , mbaasExpress = mbaasApi.mbaasExpress()
   ;
-
-require('dotenv').config({path: './test/gamma.env'})
-process.env.FH_USE_LOCAL_DB=true;
-// console.log(process.env)
 
 var config = cc({}).add({
   IP: process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0'
@@ -47,7 +47,7 @@ var ObjectManager = require('./object-manager');
 var managers = {};
 
 // setup the sync
-var sync = require('../sync-server');
+var sync = require('../../sync-server');
 
 app.get('/sync/init/:datasetId', function(req, res) {
   var datasetId = req.params.datasetId;

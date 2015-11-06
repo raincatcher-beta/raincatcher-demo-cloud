@@ -11,12 +11,11 @@ var $fh = require('../lib/feedhenry')
   , testData = require('../test-data');
   ;
 
-var datasetId = 'sync-client-dataset';
-
 // alternative to loading fhconfig via xhr
 window.fh_app_props = require('../lib/fhconfig.json');
 
 describe('Test the sync framework', function() {
+  var datasetId = 'sync-client-dataset';
   before(function() {
     localStorage.clear();
     syncTestHelper.overrideNavigator();
@@ -136,6 +135,34 @@ describe('Test the sync framework', function() {
       .then(function(result) {
         result.should.have.length(testData.length);
       });
+    });
+  });
+  describe('Single dataset, single user', function() {
+    var manager, topic, subscription;
+
+    before(function() {
+      syncTestHelper.startLoggingNotifications(mediator, datasetId);
+      return sync.manage(datasetId, null, {user: 'cathy'}).then(function(_manager) {
+        manager = _manager;
+        return syncTestHelper.waitForSyncComplete(mediator, datasetId);
+      });
+    });
+
+    after(function() {
+      syncTestHelper.stopLoggingNotifications(mediator, datasetId);
+      return manager.stop();
+    });
+
+    it('nothing blows up', function() {
+      'true'.should.be.equal('true');
+    });
+
+    it('list result is correct', function() {
+      var filtered = testData.filter(function(data) {return data.user === 'cathy'});
+      return manager.list()
+      .then(function(result) {
+        result.should.have.length(filtered.length);
+      })
     });
   });
 });

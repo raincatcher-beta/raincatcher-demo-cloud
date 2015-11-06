@@ -1,8 +1,8 @@
 'use strict';
 
 var _ = require('lodash')
-  , config = require('./test-config')
-  , testData = require('./test-data')
+  , config = require('../test-config')
+  , testData = require('../test-data')
   ;
 
 function ObjectManager(mediator, datasetId) {
@@ -17,10 +17,19 @@ function ObjectManager(mediator, datasetId) {
 
   self.topic.list = 'sync:'+datasetId+':list:load';
   console.log('Subscribing to topic:', self.topic.list);
-  this.subscription.list = mediator.subscribe(self.topic.list, function() {
+  this.subscription.list = mediator.subscribe(self.topic.list, function(queryParams) {
+    var results;
+    if (queryParams && queryParams.user) {
+      console.log('Applying list filter:', queryParams);
+      results = self.objects.filter(function(object) {
+        return object.user === queryParams.user;
+      })
+    } else {
+      results = self.objects;
+    };
     console.log(self.topic.list, 'called');
     setTimeout(function() {
-      mediator.publish('done:' + self.topic.list, self.objects);
+      mediator.publish('done:' + self.topic.list, results);
     }, 0);
   });
 

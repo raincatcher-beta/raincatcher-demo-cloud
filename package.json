@@ -10,7 +10,7 @@
     "test-wd": "mochify --wd test/client/**/*.spec.js",
     "test-cover": "mochify --cover test/client/**/*.spec.js",
     "test": "npm run phantom && npm run wd && npm run cover",
-    "test-server": "node test/test-server.js | bunyan"
+    "test-server": "nodemon --watch test/server/**/*.js --watch sync-server.js --watch lib/sync-server.js test/server/test-server.js | bunyan"
   },
   "keywords": [
     "wfm",
@@ -32,6 +32,7 @@
     "fh-mbaas-api": "^5.3.5",
     "fh-wfm-mediator": ">=0.0.7",
     "mochify": "^2.14.0",
+    "nodemon": "^1.8.1",
     "should": "^7.1.1"
   }
 }
