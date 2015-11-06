@@ -8,16 +8,16 @@ A sync module for FeedHenry WFM.
 Startup a cloud server to run the tests against:
 
 ```javascript
-> node test/test-server.js
+> npm run test-server
 ```
 
 In another termianl, run the tests:
 
 ```javascript
-> npm run phantom
+> npm run test-phantom
 ```
 
 Alternatively, run a watch to trigger test execution on file change:
 ```javascript
-> npm run watch
+> npm run test-watch
 ```

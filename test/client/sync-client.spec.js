@@ -59,13 +59,49 @@ describe('Test the sync framework', function() {
     });
 
     it('create works', function() {
-      return manager.create({id:10, value:'test-client'})
+      // syncTestHelper.restoreNavigator();
+      var remoteCreatePromise;
+      return manager.create({value:'test-client'})
       .then(function(created) {
+        should.exist(created);
+        should.exist(created._localuid);
+        should.not.exist(created.id);
         created.value.should.equal('test-client')
+
+        remoteCreatePromise = mediator.promise('sync:notification:'+datasetId, {
+          predicate: function(notification) {
+            return notification.code === 'remote_update_applied'
+              && notification.message.action === 'create'
+              && notification.message.hash === created._localuid;
+          }
+        });  // grab this promise immediately so we don't miss it's resolution during the read
+
+        return manager.read(created._localuid);
+      })
+      .then(function(created) {
+        should.not.exist(created.id);
+        created.value.should.equal('test-client');
+        return remoteCreatePromise.then(function(notification) {
+          console.log(notification);
+          return created;
+        });
+      })
+      .then(function(created) {
+        // wait briefly for the remote_update_applied to be applied locally
+        return q.delay(10).then(function() {
+          return manager.read(created._localuid);
+        });
+      })
+      .then(function(created) {
+        console.log(created);
+        should.exist(created.id);
+        created.value.should.equal('test-client');
+        created.id.should.equal(6);
         return manager.read(created.id);
       })
-      .then(function(result) {
-        result.value.should.equal('test-client');
+      .then(function(created) {
+        created.value.should.equal('test-client');
+        created.id.should.equal(6);
         return manager.list();
       })
       .then(function(result) {

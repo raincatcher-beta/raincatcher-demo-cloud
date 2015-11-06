@@ -14,7 +14,7 @@ syncTestHelper.startLoggingNotifications = function(mediator, datasetId) {
 syncTestHelper.stopLoggingNotifications = function(mediator, datasetId) {
   var topic = 'sync:notification:'+datasetId;
   mediator.remove(topic);
-  console.log('Stopped listnering for events on topic:', topic);
+  console.log('Stopped listnening for events on topic:', topic);
 }
 
 syncTestHelper.syncServerReset = function($fh) {
@@ -77,15 +77,20 @@ syncTestHelper.restoreNavigator = function() {
 
 syncTestHelper.waitForSyncComplete = function(mediator, datasetId) {
   var deferred = q.defer();
-  var sub = mediator.subscribe('sync:notification:'+datasetId, function(notification) {
+  mediator.promise('sync:notification:'+datasetId, {predicate: function(notification) {
+    return notification.code === 'sync_complete' || notification.code === 'sync_failed';
+  }}).then(function(notification) {
     if (notification.code === 'sync_complete') {
-      mediator.remove('sync:notification:'+datasetId, sub.id);
-      deferred.resolve();
+      deferred.resolve(notification);
     } else if (notification.code === 'sync_failed') {
       deferred.reject(new Error('Sync Failed', notification));
     }
   });
   return deferred.promise;
+}
+
+syncTestHelper.waitForNotification = function(mediator, datasetId, code, message) {
+  return
 }
 
 module.exports = syncTestHelper;

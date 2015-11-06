@@ -4,12 +4,13 @@
   "description": "An sync module for WFM",
   "main": "sync-angular-client.js",
   "scripts": {
-    "watch": "mochify --watch test/client/**/*.spec.js",
-    "debug": "mochify --debug test/client/**/*.spec.js",
-    "phantom": "mochify test/client/**/*.spec.js",
-    "wd": "mochify --wd test/client/**/*.spec.js",
-    "cover": "mochify --cover test/client/**/*.spec.js",
-    "test": "npm run phantom && npm run wd && npm run cover"
+    "test-watch": "mochify --watch test/client/**/*.spec.js",
+    "test-debug": "mochify --debug test/client/**/*.spec.js",
+    "test-phantom": "mochify test/client/**/*.spec.js",
+    "test-wd": "mochify --wd test/client/**/*.spec.js",
+    "test-cover": "mochify --cover test/client/**/*.spec.js",
+    "test": "npm run phantom && npm run wd && npm run cover",
+    "test-server": "node test/test-server.js | bunyan"
   },
   "keywords": [
     "wfm",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "async": "^1.5.0",
+    "bunyan": "^1.5.1",
     "config-chain": "^1.1.9",
     "cors": "^2.7.1",
     "dotenv": "^1.2.0",
