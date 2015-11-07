@@ -1,7 +1,9 @@
 'use strict';
 
+var _ = require('lodash');
 var q = require('q');
 var syncTestHelper = {};
+var navigatorOnLine, navigatorOffLine, oldNavigator;
 
 syncTestHelper.startLoggingNotifications = function(mediator, datasetId) {
   var topic = 'sync:notification:'+datasetId;
@@ -58,14 +60,17 @@ syncTestHelper.syncServerStop = function($fh, datasetId) {
 
 syncTestHelper.overrideNavigator = function() {
   // Overide window.navigator.onLine to make sync work
-  if (! navigator.oldNavigator) {
-    var fakeNavigator = {};
+  if (! oldNavigator) {
+    navigatorOnLine = {};
+    navigatorOffLine = {}
     for (var i in navigator) {
-      fakeNavigator[i] = navigator[i];
+      navigatorOnLine[i] = navigator[i];
+      navigatorOffLine[i] = navigator[i];
     }
-    fakeNavigator.onLine = true;
-    fakeNavigator.oldNavigator = navigator;
-    navigator = fakeNavigator;
+    navigatorOnLine.onLine = true;
+    navigatorOffLine.onLine = false;
+    oldNavigator = navigator;
+    navigator = navigatorOnLine;
   }
 }
 
@@ -75,10 +80,14 @@ syncTestHelper.restoreNavigator = function() {
   }
 }
 
+syncTestHelper.setOnline = function(onLine) {
+  navigator = onLine ? navigatorOnLine : navigatorOffLine;
+}
+
 syncTestHelper.waitForSyncComplete = function(mediator, datasetId) {
   var deferred = q.defer();
   mediator.promise('sync:notification:'+datasetId, {predicate: function(notification) {
-    return notification.code === 'sync_complete' || notification.code === 'sync_failed';
+    return _.isMatch(notification, {code: 'sync_complete'}) || _.isMatch(notification, {code: 'sync_failed'})
   }}).then(function(notification) {
     if (notification.code === 'sync_complete') {
       deferred.resolve(notification);
@@ -89,8 +98,12 @@ syncTestHelper.waitForSyncComplete = function(mediator, datasetId) {
   return deferred.promise;
 }
 
-syncTestHelper.waitForNotification = function(mediator, datasetId, code, message) {
-  return
+syncTestHelper.notificationPromise = function(mediator, datasetId, condition) {
+  return mediator.promise('sync:notification:'+datasetId, {
+    predicate: function(notification) {
+      return _.isMatch(notification, condition);
+    }
+  });
 }
 
 module.exports = syncTestHelper;

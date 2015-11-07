@@ -7,7 +7,7 @@ var $fh = require('../lib/feedhenry')
   , mediator = require('fh-wfm-mediator/mediator')
   , sync = require('../../lib/sync-client')
   , q = require('q')
-  , syncTestHelper = require('./test-helper')
+  , helper = require('./test-helper')
   , testData = require('../test-data');
   ;
 
@@ -18,16 +18,16 @@ describe('Test the sync framework', function() {
   var datasetId = 'sync-client-dataset';
   before(function() {
     localStorage.clear();
-    syncTestHelper.overrideNavigator();
+    helper.overrideNavigator();
 
-    return syncTestHelper.syncServerInit($fh, datasetId).then(function() {
+    return helper.syncServerInit($fh, datasetId).then(function() {
       return sync.init($fh, mediator, config.syncOptions);
     })
   });
 
   after(function() {
-    return syncTestHelper.syncServerStop($fh, datasetId).then(function() {
-      syncTestHelper.restoreNavigator();
+    return helper.syncServerStop($fh, datasetId).then(function() {
+      helper.restoreNavigator();
     });
   });
 
@@ -35,15 +35,15 @@ describe('Test the sync framework', function() {
     var manager, topic, subscription;
 
     before(function() {
-      syncTestHelper.startLoggingNotifications(mediator, datasetId);
+      helper.startLoggingNotifications(mediator, datasetId);
       return sync.manage(datasetId).then(function(_manager) {
         manager = _manager;
-        return syncTestHelper.waitForSyncComplete(mediator, datasetId);
+        return helper.waitForSyncComplete(mediator, datasetId);
       });
     });
 
     after(function() {
-      syncTestHelper.stopLoggingNotifications(mediator, datasetId);
+      helper.stopLoggingNotifications(mediator, datasetId);
       return manager.stop();
     });
 
@@ -59,7 +59,7 @@ describe('Test the sync framework', function() {
     });
 
     it('create works', function() {
-      // syncTestHelper.restoreNavigator();
+      // helper.restoreNavigator();
       var remoteCreatePromise;
       return manager.create({value:'test-client'})
       .then(function(created) {
@@ -67,12 +67,11 @@ describe('Test the sync framework', function() {
         should.exist(created._localuid);
         should.not.exist(created.id);
         created.value.should.equal('test-client')
-
-        remoteCreatePromise = mediator.promise('sync:notification:'+datasetId, {
-          predicate: function(notification) {
-            return notification.code === 'remote_update_applied'
-              && notification.message.action === 'create'
-              && notification.message.hash === created._localuid;
+        remoteCreatePromise = helper.notificationPromise(mediator, datasetId, {
+          code:'remote_update_applied',
+          message: {
+            action:'create',
+            hash: created._localuid
           }
         });  // grab this promise immediately so we don't miss it's resolution during the read
 
@@ -136,20 +135,54 @@ describe('Test the sync framework', function() {
         result.should.have.length(testData.length);
       });
     });
+
+    it('checkStatus works', function() {
+      return manager.forceSync()
+      .then(function() {
+        return helper.notificationPromise(mediator, datasetId, {code:'sync_complete', message:'online'});
+      })
+      return manager.checkStatus()
+      .then(function(status) {
+        status.should.be.equal(0);
+        return manager.read(1262134);
+      })
+      .then(function(result) {
+        result.value = 'test sync';
+        return manager.update(result)
+      })
+      .then(manager.checkStatus.bind(manager))
+      .then(function(status) {
+        status.should.be.equal(1);
+        return helper.notificationPromise(mediator, datasetId, {code:'remote_update_applied', message: {action:'update'}});
+      })
+      .then(manager.checkStatus.bind(manager))
+      .then(function(status) {
+        status.should.be.equal(0);
+      })
+      .then(manager.forceSync.bind(manager))
+      .then(function() {
+        return helper.notificationPromise(mediator, datasetId, {code:'sync_complete', message:'online'});
+      })
+      .then(manager.checkStatus.bind(manager))
+      .then(function(status) {
+        status.should.be.equal(0);
+      });
+    });
   });
+
   describe('Single dataset, single user', function() {
     var manager, topic, subscription;
 
     before(function() {
-      syncTestHelper.startLoggingNotifications(mediator, datasetId);
+      helper.startLoggingNotifications(mediator, datasetId);
       return sync.manage(datasetId, null, {user: 'cathy'}).then(function(_manager) {
         manager = _manager;
-        return syncTestHelper.waitForSyncComplete(mediator, datasetId);
+        return helper.waitForSyncComplete(mediator, datasetId);
       });
     });
 
     after(function() {
-      syncTestHelper.stopLoggingNotifications(mediator, datasetId);
+      helper.stopLoggingNotifications(mediator, datasetId);
       return manager.stop();
     });
 

@@ -37,7 +37,7 @@ describe('Test the sync via mediator', function() {
   describe('Single dataset', function() {
     before(function() {
       syncTestHelper.startLoggingNotifications(mediator, datasetId);
-      return mediator.request('sync:manage', datasetId)
+      return mediator.request('sync:manage', [datasetId, {}, {}, {}])
       .then(function() {
         return syncTestHelper.waitForSyncComplete(mediator, datasetId);
       });
