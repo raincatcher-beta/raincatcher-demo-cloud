@@ -136,12 +136,12 @@ describe('Test the sync framework', function() {
       });
     });
 
-    it('checkStatus works', function() {
+    it('getQueueSize works', function() {
       return manager.forceSync()
       .then(function() {
         return helper.notificationPromise(mediator, datasetId, {code:'sync_complete', message:'online'});
       })
-      return manager.checkStatus()
+      return manager.getQueueSize()
       .then(function(status) {
         status.should.be.equal(0);
         return manager.read(1262134);
@@ -150,12 +150,12 @@ describe('Test the sync framework', function() {
         result.value = 'test sync';
         return manager.update(result)
       })
-      .then(manager.checkStatus.bind(manager))
+      .then(manager.getQueueSize.bind(manager))
       .then(function(status) {
         status.should.be.equal(1);
         return helper.notificationPromise(mediator, datasetId, {code:'remote_update_applied', message: {action:'update'}});
       })
-      .then(manager.checkStatus.bind(manager))
+      .then(manager.getQueueSize.bind(manager))
       .then(function(status) {
         status.should.be.equal(0);
       })
@@ -163,11 +163,47 @@ describe('Test the sync framework', function() {
       .then(function() {
         return helper.notificationPromise(mediator, datasetId, {code:'sync_complete', message:'online'});
       })
-      .then(manager.checkStatus.bind(manager))
+      .then(manager.getQueueSize.bind(manager))
       .then(function(status) {
         status.should.be.equal(0);
       });
     });
+
+    it('safeStop will error on timeout', function(done) {
+      manager.read(1276712)
+      .then(function(result) {
+        result.value = 'test timeout';
+        return manager.update(result);
+      })
+      .then(function() {
+        return manager.safeStop({timeout:0});
+      })
+      .then(function() {
+        throw new Error('this promise shouldnt resolve');
+      }, function(error) {
+        error.message.should.be.equal('forceSync timeout');
+        done();
+      });
+    });
+
+    it('safeStop works with an outstanding queue', function() {
+      var progressMessage;
+      return manager.read(1276712)
+      .then(function(result) {
+        result.value = 'test2';
+        return manager.update(result)
+      })
+      .then(manager.safeStop.bind(manager))
+      .then(function() {
+        should.exist(progressMessage);
+        progressMessage.should.be.equal('Calling forceSync sync before stop');
+      }, function(error) {
+        throw error;
+      }, function(msg) {
+        progressMessage = msg;
+      })
+    });
+
   });
 
   describe('Single dataset, single user', function() {
