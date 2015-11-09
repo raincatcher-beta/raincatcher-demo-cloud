@@ -70,6 +70,20 @@ function ObjectManager(mediator, datasetId) {
       mediator.publish('done:' + self.topic.create + ':' + timestamp, object);
     }, 0);
   });
+
+  self.topic.delete = 'sync:'+datasetId+':delete';
+  console.log('Subscribing to topic:', self.topic.delete);
+  this.subscription.delete = mediator.subscribe(self.topic.delete, function(uid) {
+    console.log(self.topic.delete, 'called');
+    setTimeout(function() {
+      var index = _.findIndex(self.objects, function(_object) {
+        return _object.id == uid;
+      });
+      self.objects.splice(index, 1);
+      console.log('Deleted object id:', uid);
+      mediator.publish('done:' + self.topic.delete + ':' + uid, 'Delete successful');
+    }, 0);
+  });
 }
 
 ObjectManager.prototype.reset = function() {
@@ -85,6 +99,7 @@ ObjectManager.prototype.unsubscribe = function() {
   this.mediator.remove(this.topic.load, this.subscription.load.id);
   this.mediator.remove(this.topic.save, this.subscription.save.id);
   this.mediator.remove(this.topic.create, this.subscription.create.id);
+  this.mediator.remove(this.topic.delete, this.subscription.delete.id);
 }
 
 module.exports = ObjectManager;
