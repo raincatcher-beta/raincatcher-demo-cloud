@@ -64,8 +64,10 @@ app.get('/sync/stop/:datasetId', function(req, res, next) {
   sync.stop(mbaasApi, datasetId)
   .then(function() {
     try {
-      managers[datasetId].unsubscribe();
-      delete managers[datasetId];
+      if (managers[datasetId]) {
+        managers[datasetId].unsubscribe();
+        delete managers[datasetId];
+      }
       res.send();
     } catch(e) {
       next(e)

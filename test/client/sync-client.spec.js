@@ -19,9 +19,13 @@ describe('Test the sync framework', function() {
   before(function() {
     localStorage.clear();
     helper.overrideNavigator();
+    sync.addListener(function(notification) {
+      var topic = 'sync:notification:'+notification['dataset_id'];
+      mediator.publish(topic, notification);
+    });
 
     return helper.syncServerInit($fh, datasetId).then(function() {
-      return sync.init($fh, mediator, config.syncOptions);
+      return sync.init($fh, config.syncOptions);
     })
   });
 
@@ -64,6 +68,7 @@ describe('Test the sync framework', function() {
       return manager.create({value:'test-client'})
       .then(function(created) {
         should.exist(created);
+        console.log(created);
         should.exist(created._localuid);
         should.not.exist(created.id);
         created.value.should.equal('test-client')
