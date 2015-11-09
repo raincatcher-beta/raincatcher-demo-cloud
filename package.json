@@ -24,6 +24,8 @@
     "rx": "^4.0.6"
   },
   "devDependencies": {
+    "angular": "^1.4.7",
+    "angular-mocks": "^1.4.7",
     "async": "^1.5.0",
     "bunyan": "^1.5.1",
     "config-chain": "^1.1.9",
