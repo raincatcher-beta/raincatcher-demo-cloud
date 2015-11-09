@@ -84,26 +84,10 @@ syncTestHelper.setOnline = function(onLine) {
   navigator = onLine ? navigatorOnLine : navigatorOffLine;
 }
 
-syncTestHelper.waitForSyncComplete = function(mediator, datasetId) {
-  var deferred = q.defer();
-  mediator.promise('sync:notification:'+datasetId, {predicate: function(notification) {
-    return _.isMatch(notification, {code: 'sync_complete'}) || _.isMatch(notification, {code: 'sync_failed'})
-  }}).then(function(notification) {
-    if (notification.code === 'sync_complete') {
-      deferred.resolve(notification);
-    } else if (notification.code === 'sync_failed') {
-      deferred.reject(new Error('Sync Failed', notification));
-    }
-  });
-  return deferred.promise;
-}
-
-syncTestHelper.notificationPromise = function(mediator, datasetId, condition) {
-  return mediator.promise('sync:notification:'+datasetId, {
-    predicate: function(notification) {
-      return _.isMatch(notification, condition);
-    }
-  });
+syncTestHelper.notificationPromise = function(stream, condition) {
+  return stream.filter(function(notification) {
+    return _.isMatch(notification, condition);
+  }).take(1).toPromise(q.Promise);
 }
 
 module.exports = syncTestHelper;

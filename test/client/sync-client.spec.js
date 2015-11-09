@@ -42,7 +42,7 @@ describe('Test the sync framework', function() {
       helper.startLoggingNotifications(mediator, datasetId);
       return sync.manage(datasetId).then(function(_manager) {
         manager = _manager;
-        return helper.waitForSyncComplete(mediator, datasetId);
+        return manager.waitForSync();
       });
     });
 
@@ -72,7 +72,7 @@ describe('Test the sync framework', function() {
         should.exist(created._localuid);
         should.not.exist(created.id);
         created.value.should.equal('test-client')
-        remoteCreatePromise = helper.notificationPromise(mediator, datasetId, {
+        remoteCreatePromise = helper.notificationPromise(manager.stream, {
           code:'remote_update_applied',
           message: {
             action:'create',
@@ -144,7 +144,7 @@ describe('Test the sync framework', function() {
     it('getQueueSize works', function() {
       return manager.forceSync()
       .then(function() {
-        return helper.notificationPromise(mediator, datasetId, {code:'sync_complete', message:'online'});
+        return helper.notificationPromise(manager.stream, {code:'sync_complete', message:'online'});
       })
       return manager.getQueueSize()
       .then(function(status) {
@@ -158,7 +158,7 @@ describe('Test the sync framework', function() {
       .then(manager.getQueueSize.bind(manager))
       .then(function(status) {
         status.should.be.equal(1);
-        return helper.notificationPromise(mediator, datasetId, {code:'remote_update_applied', message: {action:'update'}});
+        return helper.notificationPromise(manager.stream, {code:'remote_update_applied', message: {action:'update'}});
       })
       .then(manager.getQueueSize.bind(manager))
       .then(function(status) {
@@ -166,7 +166,7 @@ describe('Test the sync framework', function() {
       })
       .then(manager.forceSync.bind(manager))
       .then(function() {
-        return helper.notificationPromise(mediator, datasetId, {code:'sync_complete', message:'online'});
+        return helper.notificationPromise(manager.stream, {code:'sync_complete', message:'online'});
       })
       .then(manager.getQueueSize.bind(manager))
       .then(function(status) {
@@ -218,7 +218,7 @@ describe('Test the sync framework', function() {
       helper.startLoggingNotifications(mediator, datasetId);
       return sync.manage(datasetId, null, {user: 'cathy'}).then(function(_manager) {
         manager = _manager;
-        return helper.waitForSyncComplete(mediator, datasetId);
+        return manager.waitForSync();
       });
     });
 
