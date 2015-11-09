@@ -19,10 +19,6 @@ describe('Test the sync framework', function() {
   before(function() {
     localStorage.clear();
     helper.overrideNavigator();
-    sync.addListener(function(notification) {
-      var topic = 'sync:notification:'+notification['dataset_id'];
-      mediator.publish(topic, notification);
-    });
 
     return helper.syncServerInit($fh, datasetId).then(function() {
       return sync.init($fh, config.syncOptions);
@@ -36,18 +32,18 @@ describe('Test the sync framework', function() {
   });
 
   describe('Single dataset', function() {
-    var manager, topic, subscription;
+    var manager, subscription;
 
     before(function() {
-      helper.startLoggingNotifications(mediator, datasetId);
       return sync.manage(datasetId).then(function(_manager) {
         manager = _manager;
+        subscription = helper.startLoggingNotifications(manager.stream);
         return manager.waitForSync();
       });
     });
 
     after(function() {
-      helper.stopLoggingNotifications(mediator, datasetId);
+      helper.stopLoggingNotifications(subscription);
       return manager.stop();
     });
 
@@ -212,18 +208,18 @@ describe('Test the sync framework', function() {
   });
 
   describe('Single dataset, single user', function() {
-    var manager, topic, subscription;
+    var manager, subscription;
 
     before(function() {
-      helper.startLoggingNotifications(mediator, datasetId);
       return sync.manage(datasetId, null, {user: 'cathy'}).then(function(_manager) {
         manager = _manager;
+        subscription = helper.startLoggingNotifications(manager.stream);
         return manager.waitForSync();
       });
     });
 
     after(function() {
-      helper.stopLoggingNotifications(mediator, datasetId);
+      helper.stopLoggingNotifications(subscription);
       return manager.stop();
     });
 

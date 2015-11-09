@@ -5,18 +5,15 @@ var q = require('q');
 var syncTestHelper = {};
 var navigatorOnLine, navigatorOffLine, oldNavigator;
 
-syncTestHelper.startLoggingNotifications = function(mediator, datasetId) {
-  var topic = 'sync:notification:'+datasetId;
-  var subscription = mediator.subscribe(topic, function(event) {
+syncTestHelper.startLoggingNotifications = function(stream) {
+  var subscription = stream.subscribe(function(event) {
     console.log('\x1b[36m%s\x1b[0m', '** sync event:', event.dataset_id, ':', event.code, ':',  event.message);
   });
-  console.log('Listening for events on topic:', topic);
+  return subscription;
 }
 
-syncTestHelper.stopLoggingNotifications = function(mediator, datasetId) {
-  var topic = 'sync:notification:'+datasetId;
-  mediator.remove(topic);
-  console.log('Stopped listnening for events on topic:', topic);
+syncTestHelper.stopLoggingNotifications = function(subscription) {
+  subscription.unsubscribe;
 }
 
 syncTestHelper.syncServerReset = function($fh) {
