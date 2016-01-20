@@ -1,10 +1,13 @@
 # Running WFM 2 locally
 
 ## Setup/update
+The WFM github repos are in the _feedhenry-staff_ organisation:
+> https://github.com/feedhenry-staff/?utf8=%E2%9C%93&query=wfm
+
 Follow these steps for each of:
-* wfm2-cloud
-* wfm2-portal
-* wfm2-mobile
+* wfm-cloud
+* wfm-portal
+* wfm-mobile
 
 
 1. git clone/update
@@ -17,7 +20,35 @@ Follow these steps for each of:
   * git clone the module into a parallel folder
   * npm link that folder back into the cloud/client apps
 
+The resulting directory structure should look like this:
+```
+├── modules
+│   ├── wfm-appform
+│   ├── wfm-component-signature
+│   ├── wfm-mediator
+│   ├── wfm-risk-assessment
+│   ├── wfm-sync
+│   ├── wfm-template-build
+│   ├── wfm-user
+│   ├── wfm-vehicle-inspection
+│   ├── wfm-workflow
+│   └── wfm-workorder
+├── wfm-auth
+│   └── ...
+├── wfm-cloud
+│   └── ...
+├── wfm-mobile
+│   └── ...
+└── wfm-portal
+    └── ...
+```
+
 ## Running the application
+Start mongo in a seperate terminal:
+```bash
+mongod --dbpath ~/workspace/wfm/data/
+```
+
 Start the cloud app:
 ```bash
 $ grunt serve
