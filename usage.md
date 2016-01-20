@@ -19,7 +19,10 @@ Follow these steps for each of:
   ```
 3. for each `fh-wfm-*` npm module that is being developed, run:
   * git clone the module into a parallel folder
-  * npm link that folder back into the cloud/client apps
+  * npm link that folder back into the cloud/client apps:
+```bash
+$ grep fh-wfm package.json | cut -d':' -f1 | tr -d ' "' | sed 's/fh-//' | xargs -I {} npm link ../modules/{}
+```
 
 The resulting directory structure should look like this:
 ```
