@@ -8,6 +8,7 @@ Follow these steps for each of:
 * wfm-cloud
 * wfm-portal
 * wfm-mobile
+* wfm-auth
 
 
 1. git clone/update
@@ -49,7 +50,7 @@ Start mongo in a seperate terminal:
 mongod --dbpath ~/workspace/wfm/data/
 ```
 
-Start the cloud app:
+Start the cloud and auth apps:
 ```bash
 $ grunt serve
 ```
