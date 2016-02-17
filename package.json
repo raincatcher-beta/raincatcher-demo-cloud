@@ -15,7 +15,7 @@
     "wfm"
   ],
   "author": "Brian Leathem",
-  "license": "ISC",
+  "license": "SEE LICENSE IN LICENSE.txt",
   "dependencies": {
     "body-parser": "^1.14.0",
     "config-chain": "^1.1.9",
