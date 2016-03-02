@@ -30,6 +30,7 @@ module.exports = function(grunt) {
         options: {
           args: [],
           ignore: ['public/**'],
+          watch: ['lib'],
           ext: 'js,html',
           nodeArgs: [],
           delayTime: 1,
