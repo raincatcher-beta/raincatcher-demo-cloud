@@ -52,6 +52,17 @@ describe('Test the sync framework', function() {
       return manager.stop();
     });
 
+    beforeEach(function() {
+      var self = this;
+      return manager.forceSync()
+        .then(manager.waitForSync.bind(manager))
+        .then(manager.stop.bind(manager))
+        .then(function() {
+          return helper.syncServerReset($fh, datasetId)
+        })
+        .then(manager.start.bind(manager));
+    })
+
     it('nothing blows up', function() {
       'true'.should.be.equal('true');
     });
@@ -92,7 +103,7 @@ describe('Test the sync framework', function() {
       })
       .then(function(created) {
         // wait briefly for the remote_update_applied to be applied locally
-        return q.delay(10).then(function() {
+        return q.delay(20).then(function() {
           return manager.read(created._localuid);
         });
       })
@@ -130,7 +141,6 @@ describe('Test the sync framework', function() {
     it('delete works', function() {
       return manager.read(1262134)
       .then(function(result) {
-        result.value = 'test2';
         return manager.delete(result)
       })
       .then(function(msg) {
@@ -138,7 +148,7 @@ describe('Test the sync framework', function() {
         return manager.list();
       })
       .then(function(result) {
-        result.should.have.length(testData.length);
+        result.should.have.length(testData.length - 1);
       });
     });
 
@@ -147,7 +157,7 @@ describe('Test the sync framework', function() {
       .then(function() {
         return helper.notificationPromise(manager.stream, {code:'sync_complete', message:'online'});
       })
-      return manager.getQueueSize()
+      .then(manager.getQueueSize.bind(manager))
       .then(function(status) {
         status.should.be.equal(0);
         return manager.read(1262134);
@@ -216,7 +226,7 @@ describe('Test the sync framework', function() {
     var manager, subscription;
 
     before(function() {
-      return sync.manage(datasetId, null, {user: 'cathy'}).then(function(_manager) {
+      return sync.manage(datasetId, null, {filter: {key: 'user', value: 'cathy'}}).then(function(_manager) {
         manager = _manager;
         subscription = helper.startLoggingNotifications(manager.stream);
         return manager.waitForSync();

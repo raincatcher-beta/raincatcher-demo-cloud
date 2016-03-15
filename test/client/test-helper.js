@@ -21,10 +21,10 @@ syncTestHelper.stopLoggingNotifications = function(subscription) {
   subscription.unsubscribe;
 }
 
-syncTestHelper.syncServerReset = function($fh) {
+syncTestHelper.syncServerReset = function($fh, datasetId) {
   var deferred = q.defer();
   $fh.cloud({
-    path: '/sync/reset',
+    path: '/sync/reset/' + datasetId,
     method: 'GET'
   }, function() {
     deferred.resolve();

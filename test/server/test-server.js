@@ -24,7 +24,7 @@ var app = express()
 
 var config = cc({}).add({
   IP: process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0'
-, PORT: process.env.FH_PORT || process.env.OPENSHIFT_NODEJS_PORT || 8002
+, PORT: process.env.FH_PORT || process.env.OPENSHIFT_NODEJS_PORT || 8102
 });
 
 app.set('port', config.get('PORT'));
@@ -43,7 +43,7 @@ app.use(mbaasExpress.fhmiddleware());
 // fhlint-begin: custom-routes
 app.use('/box/srv/1.1/app/init', function(req, res) { // specify the cloud host URL invoked by $fh init
   res.json({
-    hosts: {url: 'http://localhost:8002'}
+    hosts: {url: 'http://localhost:8102'}
   });
 });
 
@@ -82,7 +82,7 @@ app.get('/sync/stop/:datasetId', function(req, res, next) {
 
 app.get('/sync/reset/:datasetId', function(req, res) {
   var datasetId = req.params.datasetId;
-  console.log('\x1b[35m%s\x1b[0m', 'Starting sync for:', datasetId);
+  console.log('\x1b[35m%s\x1b[0m', 'Resetting sync for:', datasetId);
   sync.stop(mbaasApi, datasetId)
   .then(function() {
     managers[datasetId].reset();
