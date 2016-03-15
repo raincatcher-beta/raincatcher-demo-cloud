@@ -123,6 +123,88 @@ describe('Test the sync framework', function() {
       });
     });
 
+    it('operations against the temporary sync id work', function() {
+      return manager.create({value:'test-client'})
+      .then(function(created) {
+        should.exist(created);
+        console.log(created);
+        should.exist(created._localuid);
+        should.not.exist(created.id);
+        created.value.should.equal('test-client')
+        return manager.read(created._localuid);
+      })
+      .then(function(created) {
+        should.not.exist(created.id);
+        created.value.should.equal('test-client');
+        created.value = 'update-client'
+        return manager.update(created);
+      })
+      .then(function(updated) {
+        should.not.exist(updated.id);
+        updated.value.should.equal('update-client');
+        return manager.read(updated._localuid);
+      })
+      .then(function(readed) {
+        should.not.exist(readed.id);
+        readed.value.should.equal('update-client');
+      });
+    });
+
+    it('operations against the temporary sync id work, after remote is complete', function() {
+      var localuid;
+      this.timeout = 4000;
+      return manager.create({value:'test-client'})
+      .then(function(created) {
+        should.exist(created._localuid);
+        should.not.exist(created.id);
+        created.value.should.equal('test-client')
+        localuid = created._localuid;
+        return helper.notificationPromise(manager.stream, {
+          code:'remote_update_applied',
+          message: {
+            action:'create',
+            hash: created._localuid
+          }
+        });
+      })
+      .then(function(created) {
+        // wait briefly for the remote_update_applied to be applied locally
+        return q.delay(20).then(function() {
+          return manager.read(localuid);
+        });
+      })
+      .then(function(created) {
+        should.exist(created.id);
+        should.exist(created._localuid);
+        created.value.should.equal('test-client');
+        created.value = 'update-client'
+        delete created.id;
+        // created._localuid = localuid;
+        console.log(created);
+        return manager.update(created);
+      })
+      .then(function(updated) {
+        console.log(updated);
+        should.exist(updated.id);
+        should.exist(updated._localuid);
+        updated.value.should.equal('update-client');
+        return manager.read(updated.id);
+      })
+      .then(function(readed) {
+        should.exist(readed.id);
+        should.exist(readed._localuid);
+        readed._localuid.should.equal(localuid);
+        readed.value.should.equal('update-client');
+        return manager.read(localuid);
+      })
+      .then(function(readed) {
+        should.exist(readed.id);
+        readed.value.should.equal('update-client');
+      }, function(error) {
+        throw new Error(error);
+      });
+    });
+
     it('update works', function() {
       return manager.read(1262134)
       .then(function(result) {
