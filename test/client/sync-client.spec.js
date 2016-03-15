@@ -103,7 +103,7 @@ describe('Test the sync framework', function() {
       })
       .then(function(created) {
         // wait briefly for the remote_update_applied to be applied locally
-        return q.delay(20).then(function() {
+        return q.delay(200).then(function() {
           return manager.read(created._localuid);
         });
       })
@@ -169,7 +169,7 @@ describe('Test the sync framework', function() {
       })
       .then(function(created) {
         // wait briefly for the remote_update_applied to be applied locally
-        return q.delay(20).then(function() {
+        return q.delay(200).then(function() {
           return manager.read(localuid);
         });
       })
