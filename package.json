@@ -30,7 +30,7 @@
     "fh-wfm-risk-assessment": "~0.0.2",
     "fh-wfm-user": "~0.0.12",
     "fh-wfm-vehicle-inspection": "~0.0.2",
-    "fh-wfm-workflow": "~0.0.10",
+    "fh-wfm-workflow": "~0.0.13",
     "fh-wfm-workorder": "~0.0.12",
     "lodash": "^4.6.1",
     "mocha": "^2.1.0",
