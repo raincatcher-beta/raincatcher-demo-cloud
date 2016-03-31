@@ -2,7 +2,7 @@
   "name": "fh-wfm-sync",
   "version": "0.0.5",
   "description": "An sync module for WFM",
-  "main": "sync-angular-client.js",
+  "main": "lib/angular/sync-ng.js",
   "scripts": {
     "test-watch": "mochify --watch test/client/**/*.spec.js",
     "test-debug": "mochify --debug test/client/**/*.spec.js",
