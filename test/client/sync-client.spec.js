@@ -9,7 +9,7 @@ debugger;
 var $fh = require('../lib/feedhenry')
   , should = require('should')
   , config = require('../test-config')
-  , mediator = require('fh-wfm-mediator/mediator')
+  , mediator = require('fh-wfm-mediator/lib/mediator')
   , sync = require('../../lib/sync-client')
   , q = require('q')
   , helper = require('./test-helper')

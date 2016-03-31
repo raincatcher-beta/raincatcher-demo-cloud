@@ -13,7 +13,7 @@ var mbaasApi = require('fh-mbaas-api')
   , express = require('express')
   , cc = require('config-chain')
   , cors = require('cors')
-  , mediator = require('fh-wfm-mediator/mediator')
+  , mediator = require('fh-wfm-mediator/lib/mediator')
   , http = require('http')
   , syncConfig = require('../test-config')
   ;
