@@ -8,7 +8,7 @@
 var _ = require('lodash')
   , config = require('../test-config')
   , testData = require('../test-data')
-  , ArrayStore = require('fh-wfm-mediator/array-store')
+  , ArrayStore = require('fh-wfm-mediator/lib/array-store')
   ;
 
 function ObjectManager(mediator, datasetId) {
