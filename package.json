@@ -19,24 +19,24 @@
   "author": "Sebastien Blanc, Brian Leathem",
   "license": "SEE LICENSE IN LICENSE.txt",
   "dependencies": {
-    "fh-mbaas-api": "^5.5.6",
-    "lodash": "^3.10.1",
-    "q": "^1.4.1",
-    "rx": "^4.0.6"
+    "fh-mbaas-api": "5.5.6",
+    "lodash": "4.7.0",
+    "q": "1.4.1",
+    "rx": "4.1.0"
   },
   "devDependencies": {
-    "angular": "^1.4.7",
-    "angular-mocks": "^1.4.7",
-    "async": "^1.5.0",
-    "bunyan": "^1.5.1",
-    "config-chain": "^1.1.9",
-    "cors": "^2.7.1",
-    "dotenv": "^1.2.0",
-    "express": "^4.13.3",
-    "fh-mbaas-api": "^5.3.5",
-    "fh-wfm-mediator": ">=0.0.7",
-    "mochify": "^2.14.0",
-    "nodemon": "^1.8.1",
-    "should": "^7.1.1"
+    "angular": "1.5.3",
+    "angular-mocks": "1.5.3",
+    "async": "1.5.0",
+    "bunyan": "1.8.0",
+    "config-chain": "1.1.10",
+    "cors": "2.7.1",
+    "dotenv": "2.0.0",
+    "express": "4.13.4",
+    "fh-mbaas-api": "5.5.6",
+    "fh-wfm-mediator": "0.0.10",
+    "mochify": "2.17.0",
+    "nodemon": "1.9.1",
+    "should": "8.3.0"
   }
 }
