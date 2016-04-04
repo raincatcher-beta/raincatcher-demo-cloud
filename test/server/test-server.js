@@ -52,7 +52,7 @@ var ObjectManager = require('./object-manager');
 var managers = {};
 
 // setup the sync
-var sync = require('../../sync-server');
+var sync = require('../../lib/server.js');
 
 app.get('/sync/init/:datasetId', function(req, res) {
   var datasetId = req.params.datasetId;
