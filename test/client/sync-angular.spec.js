@@ -22,7 +22,7 @@ window.fh_app_props = require('../lib/fhconfig.json');
 window.$fh = $fh;
 window.angular = angular;
 
-require('../../lib/wrappers/sync-angular')
+require('../../lib/angular/sync-ng.js')
 
 describe('Test the sync framework', function() {
   var sync;

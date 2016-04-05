@@ -8,7 +8,7 @@
 module.exports = 'sync-service.consumer';
 
 angular.module('sync-service.consumer', [
-, require('../../lib/wrappers/sync-angular')
+, require('../../lib/angular/sync-ng.js')
 ])
 .factory('object1Sync', function(syncService) {
   syncService.init(window.$fh, {do_console_log: false});
