@@ -19,7 +19,6 @@
   "author": "Sebastien Blanc, Brian Leathem",
   "license": "SEE LICENSE IN LICENSE.txt",
   "dependencies": {
-    "fh-mbaas-api": "5.5.6",
     "lodash": "4.7.0",
     "q": "1.4.1",
     "rx": "4.1.0"
