@@ -17,7 +17,7 @@ function ObjectManager(mediator, datasetId) {
   this.reset();
 
   this.arrayStore = new ArrayStore(datasetId, this.objects);
-  this.arrayStore.listen('sync:', mediator);
+  this.arrayStore.listen('cloud:', mediator);
 }
 
 ObjectManager.prototype.reset = function() {
