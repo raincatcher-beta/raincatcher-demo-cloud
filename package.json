@@ -9,7 +9,7 @@
   },
   "main": "application.js",
   "scripts": {
-    "start": "grunt serve"
+    "start": "node application.js"
   },
   "keywords": [
     "wfm"
