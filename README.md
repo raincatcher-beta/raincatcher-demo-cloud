@@ -11,7 +11,7 @@ Startup a cloud server to run the tests against:
 > npm run test-server
 ```
 
-In another termianl, run the tests:
+In another terminal, run the tests:
 
 ```javascript
 > npm run test-phantom
