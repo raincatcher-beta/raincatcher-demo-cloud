@@ -1,8 +1,7 @@
 # FeedHenry WFM Cloud
 
 This is a reference/demo implementation of the cloud application of a WFM project.
-
-This repository should be used in conjonction of these following repos :
+This repository should be used in conjonction with these following repos :
 
 - [Portal Demo App](https://github.com/feedhenry-staff/wfm-portal)
 - [Mobile Client Demo App](https://github.com/feedhenry-staff/wfm-mobile)
