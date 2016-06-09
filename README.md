@@ -1,27 +1,17 @@
-# FeedHenry Hello World MBaaS Server
+# FeedHenry WFM Cloud
 
-This is the 'WFM' FeedHenry MBaaS.
+This is a reference/demo implementation of the cloud application of a WFM project.
 
-# Group Workorder API
+This repository should be used in conjonction of these following repos :
 
-# workorder [/api/wfm/workorder]
+- [Portal Demo App](https://github.com/feedhenry-staff/wfm-portal)
+- [Mobile Client Demo App](https://github.com/feedhenry-staff/wfm-mobile)
+- [WFM Auth Service](https://github.com/feedhenry-staff/wfm-auth)
 
-'Workorder' endpoint.
+## Setup (locally)
 
-## workorder [GET]
+`npm install`
 
-## workorder [POST]
+## Starting (locally)
 
-'Workorder' endpoint.
-
-+ Request (application/json)
-    + Body
-            {
-              "hello": "world"
-            }
-
-+ Response 200 (application/json)
-    + Body
-            {
-              "msg": "Hello world"
-            }
+`grunt`
