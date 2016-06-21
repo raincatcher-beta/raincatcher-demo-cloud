@@ -1,4 +1,4 @@
-# FeedHenry WFM Cloud
+# FeedHenry WFM Cloud [![Build Status](https://travis-ci.org/feedhenry-staff/wfm-cloud.png)](https://travis-ci.org/feedhenry-staff/wfm-cloud)
 
 This is a reference/demo implementation of the cloud application of a WFM project.
 
