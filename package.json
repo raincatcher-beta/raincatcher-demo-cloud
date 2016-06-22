@@ -17,7 +17,7 @@
     "sync"
   ],
   "author": "Sebastien Blanc, Brian Leathem",
-  "license": "SEE LICENSE IN LICENSE.txt",
+  "license": "MIT",
   "dependencies": {
     "lodash": "4.7.0",
     "q": "1.4.1",
