@@ -15,7 +15,7 @@
     "wfm"
   ],
   "author": "Brian Leathem",
-  "license": "SEE LICENSE IN LICENSE.txt",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "1.15.0",
     "config-chain": "1.1.10",
