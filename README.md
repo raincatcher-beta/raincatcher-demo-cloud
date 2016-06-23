@@ -3,9 +3,9 @@
 This is a reference/demo implementation of the cloud application of a WFM project.
 This repository should be used in conjonction with these following repos :
 
-- [Portal Demo App](https://github.com/feedhenry-staff/wfm-portal)
-- [Mobile Client Demo App](https://github.com/feedhenry-staff/wfm-mobile)
-- [WFM Auth Service](https://github.com/feedhenry-staff/wfm-auth)
+- [Portal Demo App](https://github.com/feedhenry-raincatcher/raincatcher-demo-portal)
+- [Mobile Client Demo App](https://github.com/feedhenry-raincatcher/raincatcher-demo-mobile)
+- [WFM Auth Service](https://github.com/feedhenry-raincatcher/raincatcher-demo-auth)
 
 ## Setup (locally)
 
