@@ -9,7 +9,8 @@
   },
   "main": "application.js",
   "scripts": {
-    "start": "node application.js"
+    "start": "node application.js",
+    "preinstall": "scripts/preinstall.sh"
   },
   "keywords": [
     "wfm"
