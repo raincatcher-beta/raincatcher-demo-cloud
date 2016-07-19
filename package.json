@@ -1,6 +1,6 @@
 {
   "name": "fh-wfm-sync",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "An sync module for WFM",
   "main": "lib/angular/sync-ng.js",
   "scripts": {
