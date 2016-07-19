@@ -33,7 +33,7 @@
     "dotenv": "2.0.0",
     "express": "4.13.4",
     "fh-mbaas-api": "5.13.1",
-    "fh-wfm-mediator": "0.0.13",
+    "fh-wfm-mediator": "0.0.14",
     "mochify": "2.17.0",
     "nodemon": "1.9.1",
     "should": "8.3.0"
