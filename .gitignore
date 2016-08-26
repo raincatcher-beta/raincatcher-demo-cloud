@@ -6,3 +6,4 @@ plugins/
 portal/app/bundle.js
 www/app/bundle.js
 gamma.env
+.idea
