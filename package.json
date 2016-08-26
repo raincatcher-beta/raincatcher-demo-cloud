@@ -1,6 +1,6 @@
 {
   "name": "wfm2",
-  "version": "2.0.0-alpha.8",
+  "version": "2.0.0-alpha.9",
   "description": "A WFM2 PoC using the mediator pattern",
   "repository": "https://github.com/feedhenry-staff/wfm2-poc.git",
   "engines": {
@@ -22,7 +22,7 @@
     "config-chain": "1.1.10",
     "cors": "2.7.1",
     "express": "4.13.4",
-    "fh-mbaas-api": "5.13.1",
+    "fh-mbaas-api": "5.13.9",
     "fh-wfm-appform": "0.0.17",
     "fh-wfm-file": "0.0.6",
     "fh-wfm-mediator": "0.0.14",
