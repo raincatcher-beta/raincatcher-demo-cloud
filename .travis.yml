@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - '0.10'
+  - '4.4'
+services:
+  - docker
+script:
+  - bash <(curl https://gist.githubusercontent.com/feedhenry-raincacher/01ac4cdb3b0770bdb58489dbc17ed6b6/raw/6205a628c3616f6736fd866d5f0fba0a781ec1e4/sonarqube.sh)
+notifications:
+  email: false
+  slack:
+    on_success: change
+    on_failure: always
+    rooms:
+      secure: >-
+        NT4akT30JqpYf6x3GbjzfQPClulm8e0WE8aSVZhPXin/FcgOYa+O3lYx1NF9w1CrDFnYPILdpYWNyMGeRMxWnuGbO/u9MhIyVtYJuxJhTOh6JzWd0neiCXGHqV+crgGxxrEBUJ2X8UWg08HGINbpUNjGABUFE9au9QLZMCy9bjdcnTXTH0B/jNlEgL+1yHb9h3sVJIfjGvn05aH9dcx1phuEfiiI3c6YZme4kS4aB3JT8JNR3kyhZUIyZSPIGl76cZggXdNRAp9V3TQ+4c3YEcZqRzI/A6eJzAjTcDBcllcBb1pn9qnBxC1l6JG+m2HKKL/MrkJti0VScIPcWWND0ycmCItdUn53xPkRQwTUt3ERYMdfeFMR0oFxDPVLGc+mhzHgGcMgfbpV+zrhy49ApceCrE3e5t85FA2/b6gPhxpulI1t/GUUL4O3HutBFDox49OvI7WALzeVBl+Gu6no4PmVATV7BYZBwtVr/OOrSyqOKOflpjXnzSVFWR27GBq2MLs1zgKSExNZ0itb9YYHKIaHokoL+mV8pAWwrIbjJeyyjUFspyEzRVafIgow5iMXn7zDe4ZEk7xmzI8zX5St3aZOKnqmeLObyH8xVzZVClRGdt8RJgPWQVphVr2spwhyGJrsa1A+viRqNDcyP2B7DHakuaAc5Xr2292nTA5v7tc=
+    on_pull_requests: false
+
