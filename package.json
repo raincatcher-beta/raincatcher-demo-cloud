@@ -9,9 +9,8 @@
     "test-phantom": "mochify test/client/**/*.spec.js",
     "test-wd": "mochify --wd test/client/**/*.spec.js",
     "test-cover": "mochify --cover test/client/**/*.spec.js",
-    "test": "npm run phantom && npm run wd && npm run cover",
-    "test-server": "nodemon --watch test/server/**/*.js --watch sync-server.js --watch lib/sync-server.js test/server/test-server.js | bunyan",
-    "eslint": "grunt"
+    "test": "grunt && npm run phantom && npm run wd && npm run cover",
+    "test-server": "nodemon --watch test/server/**/*.js --watch sync-server.js --watch lib/sync-server.js test/server/test-server.js | bunyan"
   },
   "keywords": [
     "wfm",
