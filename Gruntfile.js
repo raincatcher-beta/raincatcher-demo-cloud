@@ -2,7 +2,7 @@ module.exports = function(grunt) {
   'use strict';
   grunt.initConfig({
     eslint: {
-      src: ["lib/**/*.js"]
+      src: ["lib/**/*.js", "test/**/*.js"]
     }
   });
   grunt.loadNpmTasks("grunt-eslint");
