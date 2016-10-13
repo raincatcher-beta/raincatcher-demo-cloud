@@ -135,6 +135,9 @@ module.exports = function(grunt) {
           'plato': ['lib/**/*.js']
         }
       }
+    },
+    eslint: {
+      src: ['*.js', 'lib/**/*.js', 'test/**/*.js']
     }
   });
 
