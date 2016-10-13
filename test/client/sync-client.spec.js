@@ -1,15 +1,13 @@
-'use strict'
+'use strict';
 
-debugger;
 var $fh = require('../lib/feedhenry')
   , should = require('should')
   , config = require('../test-config')
-  , mediator = require('fh-wfm-mediator/lib/mediator')
   , sync = require('../../lib/client')
   , q = require('q')
   , helper = require('./test-helper')
   , testData = require('../test-data');
-  ;
+
 
 // alternative to loading fhconfig via xhr
 window.fh_app_props = require('../lib/fhconfig.json');
@@ -22,7 +20,7 @@ describe('Test the sync framework', function() {
 
     return helper.syncServerInit($fh, datasetId).then(function() {
       return sync.init($fh, config.syncOptions);
-    })
+    });
   });
 
   after(function() {
@@ -48,15 +46,14 @@ describe('Test the sync framework', function() {
     });
 
     beforeEach(function() {
-      var self = this;
       return manager.forceSync()
         .then(manager.waitForSync.bind(manager))
         .then(manager.stop.bind(manager))
         .then(function() {
-          return helper.syncServerReset($fh, datasetId)
+          return helper.syncServerReset($fh, datasetId);
         })
         .then(manager.start.bind(manager));
-    })
+    });
 
     it('nothing blows up', function() {
       'true'.should.be.equal('true');
@@ -66,7 +63,7 @@ describe('Test the sync framework', function() {
       return manager.list()
       .then(function(result) {
         result.should.have.length(testData.length);
-      })
+      });
     });
 
     it('create works', function() {
@@ -78,7 +75,7 @@ describe('Test the sync framework', function() {
         console.log(created);
         should.exist(created._localuid);
         should.not.exist(created.id);
-        created.value.should.equal('test-client')
+        created.value.should.equal('test-client');
         remoteCreatePromise = helper.notificationPromise(manager.stream, {
           code:'remote_update_applied',
           message: {
@@ -92,7 +89,7 @@ describe('Test the sync framework', function() {
       .then(function(created) {
         should.not.exist(created.id);
         created.value.should.equal('test-client');
-        return remoteCreatePromise.then(function(notification) {
+        return remoteCreatePromise.then(function() {
           return created;
         });
       })
@@ -125,13 +122,13 @@ describe('Test the sync framework', function() {
         console.log(created);
         should.exist(created._localuid);
         should.not.exist(created.id);
-        created.value.should.equal('test-client')
+        created.value.should.equal('test-client');
         return manager.read(created._localuid);
       })
       .then(function(created) {
         should.not.exist(created.id);
         created.value.should.equal('test-client');
-        created.value = 'update-client'
+        created.value = 'update-client';
         return manager.update(created);
       })
       .then(function(updated) {
@@ -152,7 +149,7 @@ describe('Test the sync framework', function() {
       .then(function(created) {
         should.exist(created._localuid);
         should.not.exist(created.id);
-        created.value.should.equal('test-client')
+        created.value.should.equal('test-client');
         localuid = created._localuid;
         return helper.notificationPromise(manager.stream, {
           code:'remote_update_applied',
@@ -162,7 +159,7 @@ describe('Test the sync framework', function() {
           }
         });
       })
-      .then(function(created) {
+      .then(function() {
         // wait briefly for the remote_update_applied to be applied locally
         return q.delay(200).then(function() {
           return manager.read(localuid);
@@ -172,7 +169,7 @@ describe('Test the sync framework', function() {
         should.exist(created.id);
         should.exist(created._localuid);
         created.value.should.equal('test-client');
-        created.value = 'update-client'
+        created.value = 'update-client';
         delete created.id;
         // created._localuid = localuid;
         console.log(created);
@@ -204,7 +201,7 @@ describe('Test the sync framework', function() {
       return manager.read(1262134)
       .then(function(result) {
         result.value = 'test2';
-        return manager.update(result)
+        return manager.update(result);
       })
       .then(function(updatedResult) {
         updatedResult.value.should.equal('test2');
@@ -218,7 +215,7 @@ describe('Test the sync framework', function() {
     it('delete works', function() {
       return manager.read(1262134)
       .then(function(result) {
-        return manager.delete(result)
+        return manager.delete(result);
       })
       .then(function(msg) {
         msg.should.equal('delete');
@@ -241,7 +238,7 @@ describe('Test the sync framework', function() {
       })
       .then(function(result) {
         result.value = 'test sync';
-        return manager.update(result)
+        return manager.update(result);
       })
       .then(manager.getQueueSize.bind(manager))
       .then(function(status) {
@@ -284,7 +281,7 @@ describe('Test the sync framework', function() {
       return manager.read(1276712)
       .then(function(result) {
         result.value = 'test2';
-        return manager.update(result)
+        return manager.update(result);
       })
       .then(manager.safeStop.bind(manager))
       .then(function() {
@@ -294,7 +291,7 @@ describe('Test the sync framework', function() {
         throw error;
       }, function(msg) {
         progressMessage = msg;
-      })
+      });
     });
 
   });
@@ -320,11 +317,13 @@ describe('Test the sync framework', function() {
     });
 
     it('list result is correct', function() {
-      var filtered = testData.filter(function(data) {return data.user === 'cathy'});
+      var filtered = testData.filter(function(data) {
+        return data.user === 'cathy';
+      });
       return manager.list()
       .then(function(result) {
         result.should.have.length(filtered.length);
-      })
+      });
     });
   });
 });

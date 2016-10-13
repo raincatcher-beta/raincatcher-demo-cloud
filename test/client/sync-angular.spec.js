@@ -1,10 +1,7 @@
-'use strict'
+'use strict';
 
-debugger;
 var $fh = require('../lib/feedhenry')
-  , should = require('should')
   , config = require('../test-config')
-  , mediator = require('fh-wfm-mediator/lib/mediator')
   , q = require('q')
   , helper = require('./test-helper')
   , testData = require('../test-data')
@@ -17,7 +14,7 @@ window.fh_app_props = require('../lib/fhconfig.json');
 window.$fh = $fh;
 window.angular = angular;
 
-require('../../lib/angular/sync-ng.js')
+require('../../lib/angular/sync-ng.js');
 
 describe('Test the sync framework', function() {
   var sync;
@@ -27,7 +24,7 @@ describe('Test the sync framework', function() {
   before(function() {
     localStorage.clear();
     helper.overrideNavigator();
-    return helper.syncServerInit($fh, datasetId)
+    return helper.syncServerInit($fh, datasetId);
   });
 
   after(function() {
@@ -41,7 +38,7 @@ describe('Test the sync framework', function() {
     angular.mock.module(function($provide) {
       $provide.value('$q', q);
     });
-    angular.mock.inject(function (_syncService_) {
+    angular.mock.inject(function(_syncService_) {
       sync = _syncService_;
     });
   });
@@ -71,6 +68,6 @@ describe('Test the sync framework', function() {
     return manager.list()
     .then(function(result) {
       result.should.have.length(testData.length);
-    })
+    });
   });
 });
