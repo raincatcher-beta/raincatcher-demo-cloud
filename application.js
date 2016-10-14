@@ -6,8 +6,6 @@ var app   = require('./lib/app.js')
   , ip = app.get('base url')
   ;
 
-var tag = 'SERVER';
-
 var server = http.createServer(app);
 server.listen(port, ip, function() {
   console.log("App started at: " + new Date() + " on port: " + port);

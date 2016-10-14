@@ -10,7 +10,8 @@
   "main": "application.js",
   "scripts": {
     "start": "node application.js",
-    "preinstall": "chmod +x scripts/preinstall.sh && scripts/preinstall.sh"
+    "preinstall": "chmod +x scripts/preinstall.sh && scripts/preinstall.sh",
+    "test": "grunt eslint"
   },
   "keywords": [
     "wfm"
@@ -42,6 +43,7 @@
     "grunt-concurrent": "2.2.1",
     "grunt-contrib-watch": "1.0.0",
     "grunt-env": "0.4.4",
+    "grunt-eslint": "^18.0.0",
     "grunt-node-inspector": ">=0.2.0",
     "grunt-nodemon": "0.4.1",
     "grunt-open": "0.2.3",
