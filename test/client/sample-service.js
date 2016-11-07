@@ -2,9 +2,7 @@
 
 module.exports = 'sync-service.consumer';
 
-angular.module('sync-service.consumer', [
-, require('../../lib/angular/sync-ng.js')
-])
+angular.module('sync-service.consumer', [require('../../lib/angular/sync-ng.js')])
 .factory('object1Sync', function(syncService) {
   syncService.init(window.$fh, {do_console_log: false});
   var object1Sync = {};
@@ -24,4 +22,4 @@ angular.module('sync-service.consumer', [
   });
 
   return object2Sync;
-})
+});

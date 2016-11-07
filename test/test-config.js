@@ -7,4 +7,4 @@ module.exports = {
     "storage_strategy": "dom",
     "do_console_log": false
   }
-}
+};
