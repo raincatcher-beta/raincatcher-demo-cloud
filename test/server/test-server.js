@@ -1,6 +1,6 @@
 'use strict';
 
-require('dotenv').config({path: './test/server/gamma.env'})
+require('dotenv').config({path: './test/server/gamma.env'});
 process.env.FH_USE_LOCAL_DB=true;
 // console.log(process.env)
 
@@ -56,7 +56,7 @@ app.get('/sync/init/:datasetId', function(req, res) {
   .then(function() {
     res.send();
   });
-})
+});
 
 app.get('/sync/stop/:datasetId', function(req, res, next) {
   var datasetId = req.params.datasetId;
@@ -69,11 +69,11 @@ app.get('/sync/stop/:datasetId', function(req, res, next) {
         delete managers[datasetId];
       }
       res.send();
-    } catch(e) {
-      next(e)
+    } catch (e) {
+      next(e);
     }
   });
-})
+});
 
 app.get('/sync/reset/:datasetId', function(req, res) {
   var datasetId = req.params.datasetId;
@@ -85,7 +85,7 @@ app.get('/sync/reset/:datasetId', function(req, res) {
   })
   .then(function() {
     res.send();
-  })
+  });
 });
 
 // Important that this is last!

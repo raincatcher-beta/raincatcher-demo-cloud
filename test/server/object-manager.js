@@ -1,7 +1,6 @@
 'use strict';
 
 var _ = require('lodash')
-  , config = require('../test-config')
   , testData = require('../test-data')
   , ArrayStore = require('fh-wfm-mediator/lib/array-store')
   ;
@@ -22,10 +21,10 @@ ObjectManager.prototype.reset = function() {
     self.objects.push(_.clone(_object));
   });
   console.log('ObjectManager reset for dataset', this.datasetId);
-}
+};
 
 ObjectManager.prototype.unsubscribe = function() {
   this.arrayStore.unsubscribe();
-}
+};
 
 module.exports = ObjectManager;
