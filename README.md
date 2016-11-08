@@ -13,10 +13,9 @@ A sync module for FeedHenry WFM providing :
 This module is packaged in a CommonJS format, exporting the name of the Angular namespace.  The module can be included in an angular.js as follows:
 
 ```javascript
-angular.module('app', [
-, require('fh-wfm-sync')
-...
-])
+angular.module('app', [require('fh-wfm-sync')], function(sync){
+// ...
+});
 ```
 #### Integration
 
@@ -30,7 +29,8 @@ The sync service must first be initialized using the `syncService.init()`. Gener
   syncService.init($fh, config.syncOptions);
 });
 
-```  
+```
+
 Once initialized the syncService can manage a `dataset` :
 
 ```javascript
@@ -49,17 +49,11 @@ Checkout a full example [here](https://github.com/feedhenry-staff/wfm-workorder/
 The server-side component of this WFM module exports a function that takes express and mediator instances as parameters, as in:
 
 ```javascript
-
-
-var _ = require('lodash')
-  , sync = require('fh-wfm-sync/lib/server')
-  , config = require('./config')
-
+var  sync = require('fh-wfm-sync/lib/server')
 
 module.exports = function(mediator, app, mbaasApi) {
   sync.init(mediator, mbaasApi, config.datasetId, config.syncOptions);
 };
-
 ```
 #### Sync config options
 
