@@ -34,7 +34,7 @@
     "dotenv": "2.0.0",
     "express": "4.13.4",
     "fh-mbaas-api": "5.13.1",
-    "fh-wfm-mediator": "0.0.14",
+    "fh-wfm-mediator": "0.0.15",
     "grunt": "^1.0.1",
     "grunt-eslint": "^18.0.0",
     "mochify": "2.17.0",
