@@ -24,7 +24,7 @@
     "fh-wfm-mediator": "0.0.15",
     "fh-wfm-message": "0.0.15",
     "fh-wfm-result": "0.0.16",
-    "fh-wfm-user": "^0.2.0-alpha.7",
+    "fh-wfm-user": "0.2.0-alpha.9",
     "fh-wfm-workflow": "0.0.26",
     "fh-wfm-workorder": "0.0.27",
     "lodash": "4.7.0",
