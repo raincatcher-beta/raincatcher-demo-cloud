@@ -3,6 +3,10 @@
   "version": "0.0.16",
   "description": "An sync module for WFM",
   "main": "lib/angular/sync-ng.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/feedhenry-raincatcher/raincatcher-sync.git"
+  },
   "scripts": {
     "test-watch": "mochify --watch test/client/**/*.spec.js",
     "test-debug": "mochify --debug test/client/**/*.spec.js",
