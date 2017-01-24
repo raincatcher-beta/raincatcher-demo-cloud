@@ -47,8 +47,8 @@ module.exports = function(grunt) {
       options : {},
       // environment variables - see https://github.com/jsoverson/grunt-env for more information
       local: {
-        src: "gamma.env",
         FH_USE_LOCAL_DB: true,
+        WFM_USE_MEMORY_STORE: true, //Used to specify which store to be used. If true, it will use persistent store
         FH_SERVICE_MAP: function() {
           /*
            * Define the mappings for your services here - for local development.
@@ -138,15 +138,25 @@ module.exports = function(grunt) {
     },
     eslint: {
       src: ['*.js', 'lib/**/*.js', 'test/**/*.js']
+    },
+    mochaTest: {
+      test: {
+        options: {
+          run: true
+        },
+        src: ['lib/*spec.js']
+      }
     }
   });
 
   // Load NPM tasks
   require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
+  grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-eslint');
 
   // Testing tasks
   grunt.registerTask('test', ['shell:unit', 'shell:accept']);
-  grunt.registerTask('unit', ['shell:unit']);
+  grunt.registerTask('unit', ['mochaTest']);
   grunt.registerTask('accept', ['env:local', 'shell:accept']);
 
   // Coverate tasks
