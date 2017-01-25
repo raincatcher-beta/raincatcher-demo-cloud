@@ -144,7 +144,7 @@ module.exports = function(grunt) {
         options: {
           run: true
         },
-        src: ['lib/*spec.js']
+        src: ['lib/**/*-spec.js']
       }
     }
   });
