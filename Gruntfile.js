@@ -6,16 +6,19 @@ module.exports = function(grunt) {
     eslint: {
       src: ["lib/**/*.js", "test/**/*.spec.js"]
     },
-    mochify: {
-      options: {
-        reporter: 'spec'
-      },
-      unit: {
-        src: ['lib/**/**/*-spec.js']
+    mochaTest: {
+      test: {
+        src: ['lib/**/*-spec.js'],
+        options: {
+          reporter: 'Spec',
+          logErrors: true,
+          timeout: 10000,
+          run: true
+        }
       }
     }
   });
 
-  grunt.registerTask('test', ['eslint', 'mochify:unit']);
-  grunt.registerTask('default', ['eslint']);
+  grunt.registerTask('test', ['eslint', 'mochaTest']);
+  grunt.registerTask('default', ['test']);
 };
