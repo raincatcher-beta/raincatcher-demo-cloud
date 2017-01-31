@@ -8,13 +8,10 @@
     "url": "https://github.com/feedhenry-raincatcher/raincatcher-sync.git"
   },
   "scripts": {
-    "test-watch": "mochify --watch test/client/**/*.spec.js",
-    "test-debug": "mochify --debug test/client/**/*.spec.js",
-    "test-phantom": "mochify test/client/**/*.spec.js",
-    "test-wd": "mochify --wd test/client/**/*.spec.js",
-    "test-cover": "mochify --cover test/client/**/*.spec.js",
-    "test": "grunt && npm run phantom && npm run wd && npm run cover",
-    "test-server": "nodemon --watch test/server/**/*.js --watch sync-server.js --watch lib/sync-server.js test/server/test-server.js | bunyan",
+    "test-watch": "mochify --watch lib/**/**/*-spec.js",
+    "test-debug": "mochify --debug lib/**/**/*-spec.js",
+    "test-cover": "mochify --cover lib/**/**/*-spec.js",
+    "test": "grunt test",
     "grunt-eslint": "grunt eslint"
   },
   "keywords": [
@@ -33,16 +30,22 @@
     "angular-mocks": "1.5.3",
     "async": "1.5.0",
     "bunyan": "1.8.0",
+    "chai": "^3.5.0",
     "config-chain": "1.1.10",
     "cors": "2.7.1",
     "dotenv": "2.0.0",
     "express": "4.13.4",
     "fh-mbaas-api": "5.14.2",
     "fh-wfm-mediator": "0.0.15",
-    "grunt": "^1.0.1",
-    "grunt-eslint": "^18.0.0",
-    "mochify": "2.17.0",
+    "grunt": "1.0.1",
+    "grunt-cli": "1.2.0",
+    "grunt-eslint": "18.0.0",
+    "grunt-mocha-test": "0.13.2",
+    "load-grunt-tasks": "3.5.2",
+    "mocha": "3.2.0",
     "nodemon": "1.9.1",
-    "should": "8.3.0"
+    "should": "8.3.0",
+    "sinon": "1.17.6",
+    "sinon-as-promised": "4.0.2"
   }
 }
