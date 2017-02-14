@@ -19,6 +19,7 @@
     "config-chain": "1.1.10",
     "cors": "2.7.1",
     "express": "4.15.2",
+    "fh-component-metrics": "2.4.0",
     "fh-mbaas-api": "6.1.8",
     "fh-wfm-appform": "0.1.0",
     "fh-wfm-file": "0.1.2",
