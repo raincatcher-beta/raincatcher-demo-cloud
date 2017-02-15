@@ -48,12 +48,12 @@ module.exports = function(grunt) {
       // environment variables - see https://github.com/jsoverson/grunt-env for more information
       local: {
         FH_USE_LOCAL_DB: true,
+        WFM_USE_MEMORY_STORE: true, //Used to specify which store to be used. If true, it will use persistent store
         WFM_AUTH_GUID: "iidn3tvprs62asdebat5m3eg",
         /*
          * This is mapping to authentication service, when running raincatcher-demo-auth locally it will map to it
          * allowing correct authentication.
          */
-
         FH_SERVICE_MAP: function() {
           /*
            * Define the mappings for your services here - for local development.
@@ -142,7 +142,7 @@ module.exports = function(grunt) {
       }
     },
     eslint: {
-      src: ['*.js', 'lib/**/**/*.js', 'test/**/*.js']
+      src: ['*.js', 'lib/**/*.js', 'test/**/*.js']
     },
     mochaTest: {
       test: {
@@ -159,12 +159,11 @@ module.exports = function(grunt) {
 
   // Load NPM tasks
   require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
+  grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-eslint');
 
   // Testing tasks
   grunt.registerTask('test', ['shell:unit', 'shell:accept']);
-
-  grunt.loadNpmTasks('grunt-mocha-test');
-  grunt.loadNpmTasks('grunt-eslint');
   grunt.registerTask('mocha', ['mochaTest']);
   grunt.registerTask('unit', ['eslint', 'mocha']);
 

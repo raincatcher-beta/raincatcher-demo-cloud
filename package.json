@@ -14,7 +14,6 @@
   "author": "Brian Leathem",
   "license": "MIT",
   "dependencies": {
-    "async": "2.1.4",
     "bluebird": "^3.4.7",
     "body-parser": "1.15.0",
     "config-chain": "1.1.10",
@@ -26,6 +25,7 @@
     "fh-wfm-mediator": "0.0.15",
     "fh-wfm-message": "0.0.15",
     "fh-wfm-result": "0.0.16",
+    "fh-wfm-simple-store": "0.1.0",
     "fh-wfm-user": "0.2.1",
     "fh-wfm-workflow": "0.0.26",
     "fh-wfm-workorder": "0.0.27",
