@@ -43,12 +43,17 @@ module.exports = function(grunt) {
         logConcurrentOutput: true
       }
     },
-    env : {
-      options : {},
+    env: {
+      options: {},
       // environment variables - see https://github.com/jsoverson/grunt-env for more information
       local: {
         FH_USE_LOCAL_DB: true,
         WFM_USE_MEMORY_STORE: true, //Used to specify which store to be used. If true, it will use persistent store
+        WFM_AUTH_GUID: "iidn3tvprs62asdebat5m3eg",
+        /*
+         * This is mapping to authentication service, when running raincatcher-demo-auth locally it will map to it
+         * allowing correct authentication.
+         */
         FH_SERVICE_MAP: function() {
           /*
            * Define the mappings for your services here - for local development.
@@ -128,8 +133,8 @@ module.exports = function(grunt) {
     },
     plato: {
       src: {
-        options : {
-          jshint : grunt.file.readJSON('.jshintrc')
+        options: {
+          jshint: grunt.file.readJSON('.jshintrc')
         },
         files: {
           'plato': ['lib/**/*.js']
@@ -141,10 +146,13 @@ module.exports = function(grunt) {
     },
     mochaTest: {
       test: {
+        src: ['lib/**/**/*-spec.js'],
         options: {
+          reporter: 'Spec',
+          logErrors: true,
+          timeout: 5000,
           run: true
-        },
-        src: ['lib/**/*-spec.js']
+        }
       }
     }
   });
@@ -156,7 +164,9 @@ module.exports = function(grunt) {
 
   // Testing tasks
   grunt.registerTask('test', ['shell:unit', 'shell:accept']);
-  grunt.registerTask('unit', ['mochaTest']);
+  grunt.registerTask('mocha', ['mochaTest']);
+  grunt.registerTask('unit', ['eslint', 'mocha']);
+
   grunt.registerTask('accept', ['env:local', 'shell:accept']);
 
   // Coverate tasks
