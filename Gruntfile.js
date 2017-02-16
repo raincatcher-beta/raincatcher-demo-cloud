@@ -43,8 +43,8 @@ module.exports = function(grunt) {
         logConcurrentOutput: true
       }
     },
-    env: {
-      options: {},
+    env : {
+      options : {},
       // environment variables - see https://github.com/jsoverson/grunt-env for more information
       local: {
         FH_USE_LOCAL_DB: true,
