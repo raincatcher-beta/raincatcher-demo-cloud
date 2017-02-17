@@ -11,7 +11,8 @@ This repository should be used in conjonction with these following repos :
 
 ## Prerequisites (local)
 
-This repository requires that mongodb be installed and running on port 27017.
+- mongodb installed and running on port 27017.
+- redis installed and running on port 6379
 
 ## Setup (locally)
 
