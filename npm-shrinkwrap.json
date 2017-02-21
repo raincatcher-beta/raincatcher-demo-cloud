@@ -1,6 +1,6 @@
 {
   "name": "wfm2",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "dependencies": {
     "async": {
       "version": "2.1.4",
