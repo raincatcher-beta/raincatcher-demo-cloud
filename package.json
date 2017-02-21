@@ -1,6 +1,6 @@
 {
   "name": "wfm2",
-  "version": "2.2.1",
+  "version": "2.2.3",
   "description": "A WFM2 PoC using the mediator pattern",
   "repository": "https://github.com/feedhenry-raincatcher/raincatcher-demo-cloud.git",
   "main": "application.js",
@@ -26,7 +26,7 @@
     "fh-wfm-mediator": "0.0.15",
     "fh-wfm-message": "0.0.15",
     "fh-wfm-result": "0.0.16",
-    "fh-wfm-user": "0.2.2",
+    "fh-wfm-user": "0.2.4",
     "fh-wfm-workflow": "0.0.26",
     "fh-wfm-workorder": "0.0.27",
     "http-status-codes": "1.0.6",
