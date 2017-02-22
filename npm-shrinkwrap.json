@@ -162,7 +162,7 @@
           "dependencies": {
             "mime-types": {
               "version": "2.1.14",
-              "from": "mime-types@>=2.1.11 <2.2.0",
+              "from": "mime-types@>=2.1.13 <2.2.0",
               "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.14.tgz",
               "dependencies": {
                 "mime-db": {
@@ -424,7 +424,7 @@
             },
             "mime-types": {
               "version": "2.1.14",
-              "from": "mime-types@>=2.1.11 <2.2.0",
+              "from": "mime-types@>=2.1.13 <2.2.0",
               "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.14.tgz",
               "dependencies": {
                 "mime-db": {
@@ -1001,8 +1001,8 @@
                 },
                 "node-uuid": {
                   "version": "1.4.7",
-                  "from": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.7.tgz",
-                  "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.7.tgz"
+                  "from": "http://registry.npmjs.org/node-uuid/-/node-uuid-1.4.7.tgz",
+                  "resolved": "http://registry.npmjs.org/node-uuid/-/node-uuid-1.4.7.tgz"
                 }
               }
             },
@@ -2510,9 +2510,9 @@
       }
     },
     "fh-wfm-mediator": {
-      "version": "0.1.0-rc4",
-      "from": "fh-wfm-mediator@0.1.0-rc4",
-      "resolved": "https://registry.npmjs.org/fh-wfm-mediator/-/fh-wfm-mediator-0.1.0-rc4.tgz",
+      "version": "0.2.0-0",
+      "from": "fh-wfm-mediator@0.2.0-0",
+      "resolved": "https://registry.npmjs.org/fh-wfm-mediator/-/fh-wfm-mediator-0.2.0-0.tgz",
       "dependencies": {
         "mediator-js": {
           "version": "0.9.9",
@@ -2522,26 +2522,14 @@
       }
     },
     "fh-wfm-message": {
-      "version": "0.0.16-alpha.2",
-      "from": "fh-wfm-message@0.0.16-alpha.2",
-      "resolved": "https://registry.npmjs.org/fh-wfm-message/-/fh-wfm-message-0.0.16-alpha.2.tgz",
+      "version": "0.1.0-alpha.1",
+      "from": "fh-wfm-message@0.1.0-alpha.1",
+      "resolved": "https://registry.npmjs.org/fh-wfm-message/-/fh-wfm-message-0.1.0-alpha.1.tgz",
       "dependencies": {
         "angular-messages": {
           "version": "1.5.3",
           "from": "angular-messages@1.5.3",
           "resolved": "https://registry.npmjs.org/angular-messages/-/angular-messages-1.5.3.tgz"
-        },
-        "fh-wfm-sync": {
-          "version": "0.0.16",
-          "from": "fh-wfm-sync@0.0.16",
-          "resolved": "https://registry.npmjs.org/fh-wfm-sync/-/fh-wfm-sync-0.0.16.tgz",
-          "dependencies": {
-            "rx": {
-              "version": "4.1.0",
-              "from": "rx@4.1.0",
-              "resolved": "https://registry.npmjs.org/rx/-/rx-4.1.0.tgz"
-            }
-          }
         },
         "lodash": {
           "version": "4.7.0",
@@ -2557,30 +2545,23 @@
           "version": "0.3.0",
           "from": "ng-feedhenry@0.3.0",
           "resolved": "https://registry.npmjs.org/ng-feedhenry/-/ng-feedhenry-0.3.0.tgz"
+        },
+        "string-template": {
+          "version": "1.0.0",
+          "from": "string-template@>=1.0.0 <2.0.0",
+          "resolved": "https://registry.npmjs.org/string-template/-/string-template-1.0.0.tgz"
         }
       }
     },
     "fh-wfm-result": {
-      "version": "0.0.17-alpha.3",
-      "from": "fh-wfm-result@0.0.17-alpha.3",
-      "resolved": "https://registry.npmjs.org/fh-wfm-result/-/fh-wfm-result-0.0.17-alpha.3.tgz",
+      "version": "0.1.0-alpha.1",
+      "from": "fh-wfm-result@0.1.0-alpha.1",
+      "resolved": "https://registry.npmjs.org/fh-wfm-result/-/fh-wfm-result-0.1.0-alpha.1.tgz",
       "dependencies": {
         "angular-messages": {
           "version": "1.5.3",
           "from": "angular-messages@1.5.3",
           "resolved": "https://registry.npmjs.org/angular-messages/-/angular-messages-1.5.3.tgz"
-        },
-        "fh-wfm-sync": {
-          "version": "0.0.16",
-          "from": "fh-wfm-sync@0.0.16",
-          "resolved": "https://registry.npmjs.org/fh-wfm-sync/-/fh-wfm-sync-0.0.16.tgz",
-          "dependencies": {
-            "rx": {
-              "version": "4.1.0",
-              "from": "rx@4.1.0",
-              "resolved": "https://registry.npmjs.org/rx/-/rx-4.1.0.tgz"
-            }
-          }
         },
         "lodash": {
           "version": "4.7.0",
@@ -2591,13 +2572,49 @@
           "version": "0.3.0",
           "from": "ng-feedhenry@0.3.0",
           "resolved": "https://registry.npmjs.org/ng-feedhenry/-/ng-feedhenry-0.3.0.tgz"
+        },
+        "string-template": {
+          "version": "1.0.0",
+          "from": "string-template@>=1.0.0 <2.0.0",
+          "resolved": "https://registry.npmjs.org/string-template/-/string-template-1.0.0.tgz"
         }
       }
     },
     "fh-wfm-simple-store": {
       "version": "0.1.1-alpha.2",
       "from": "fh-wfm-simple-store@0.1.1-alpha.2",
-      "resolved": "https://registry.npmjs.org/fh-wfm-simple-store/-/fh-wfm-simple-store-0.1.1-alpha.2.tgz"
+      "resolved": "https://registry.npmjs.org/fh-wfm-simple-store/-/fh-wfm-simple-store-0.1.1-alpha.2.tgz",
+      "dependencies": {
+        "fh-wfm-mediator": {
+          "version": "0.1.0-rc4",
+          "from": "fh-wfm-mediator@0.1.0-rc4",
+          "resolved": "https://registry.npmjs.org/fh-wfm-mediator/-/fh-wfm-mediator-0.1.0-rc4.tgz",
+          "dependencies": {
+            "mediator-js": {
+              "version": "0.9.9",
+              "from": "mediator-js@>=0.9.9 <0.10.0",
+              "resolved": "https://registry.npmjs.org/mediator-js/-/mediator-js-0.9.9.tgz"
+            }
+          }
+        }
+      }
+    },
+    "fh-wfm-sync": {
+      "version": "0.1.0-alpha.4",
+      "from": "fh-wfm-sync@0.1.0-alpha.4",
+      "resolved": "https://registry.npmjs.org/fh-wfm-sync/-/fh-wfm-sync-0.1.0-alpha.4.tgz",
+      "dependencies": {
+        "lodash": {
+          "version": "4.7.0",
+          "from": "lodash@4.7.0",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.7.0.tgz"
+        },
+        "rx": {
+          "version": "4.1.0",
+          "from": "rx@4.1.0",
+          "resolved": "https://registry.npmjs.org/rx/-/rx-4.1.0.tgz"
+        }
+      }
     },
     "fh-wfm-user": {
       "version": "0.3.1-alpha.6",
@@ -3247,8 +3264,8 @@
                     },
                     "node-uuid": {
                       "version": "1.4.7",
-                      "from": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.7.tgz",
-                      "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.7.tgz"
+                      "from": "http://registry.npmjs.org/node-uuid/-/node-uuid-1.4.7.tgz",
+                      "resolved": "http://registry.npmjs.org/node-uuid/-/node-uuid-1.4.7.tgz"
                     }
                   }
                 },
@@ -4453,6 +4470,18 @@
             }
           }
         },
+        "fh-wfm-mediator": {
+          "version": "0.1.0-rc4",
+          "from": "fh-wfm-mediator@0.1.0-rc4",
+          "resolved": "https://registry.npmjs.org/fh-wfm-mediator/-/fh-wfm-mediator-0.1.0-rc4.tgz",
+          "dependencies": {
+            "mediator-js": {
+              "version": "0.9.9",
+              "from": "mediator-js@>=0.9.9 <0.10.0",
+              "resolved": "https://registry.npmjs.org/mediator-js/-/mediator-js-0.9.9.tgz"
+            }
+          }
+        },
         "lodash": {
           "version": "4.7.0",
           "from": "lodash@4.7.0",
@@ -4566,22 +4595,10 @@
       }
     },
     "fh-wfm-workflow": {
-      "version": "0.0.27-alpha.2",
-      "from": "fh-wfm-workflow@0.0.27-alpha.2",
-      "resolved": "https://registry.npmjs.org/fh-wfm-workflow/-/fh-wfm-workflow-0.0.27-alpha.2.tgz",
+      "version": "0.1.0-alpha.1",
+      "from": "fh-wfm-workflow@0.1.0-alpha.1",
+      "resolved": "https://registry.npmjs.org/fh-wfm-workflow/-/fh-wfm-workflow-0.1.0-alpha.1.tgz",
       "dependencies": {
-        "fh-wfm-sync": {
-          "version": "0.0.16",
-          "from": "fh-wfm-sync@0.0.16",
-          "resolved": "https://registry.npmjs.org/fh-wfm-sync/-/fh-wfm-sync-0.0.16.tgz",
-          "dependencies": {
-            "rx": {
-              "version": "4.1.0",
-              "from": "rx@4.1.0",
-              "resolved": "https://registry.npmjs.org/rx/-/rx-4.1.0.tgz"
-            }
-          }
-        },
         "lodash": {
           "version": "4.7.0",
           "from": "lodash@4.7.0",
@@ -4591,30 +4608,23 @@
           "version": "0.3.0",
           "from": "ng-feedhenry@0.3.0",
           "resolved": "https://registry.npmjs.org/ng-feedhenry/-/ng-feedhenry-0.3.0.tgz"
+        },
+        "string-template": {
+          "version": "1.0.0",
+          "from": "string-template@>=1.0.0 <2.0.0",
+          "resolved": "https://registry.npmjs.org/string-template/-/string-template-1.0.0.tgz"
         }
       }
     },
     "fh-wfm-workorder": {
-      "version": "0.0.28-alpha.2",
-      "from": "fh-wfm-workorder@0.0.28-alpha.2",
-      "resolved": "https://registry.npmjs.org/fh-wfm-workorder/-/fh-wfm-workorder-0.0.28-alpha.2.tgz",
+      "version": "0.1.0-alpha.1",
+      "from": "fh-wfm-workorder@0.1.0-alpha.1",
+      "resolved": "https://registry.npmjs.org/fh-wfm-workorder/-/fh-wfm-workorder-0.1.0-alpha.1.tgz",
       "dependencies": {
         "angular-messages": {
           "version": "1.5.3",
           "from": "angular-messages@1.5.3",
           "resolved": "https://registry.npmjs.org/angular-messages/-/angular-messages-1.5.3.tgz"
-        },
-        "fh-wfm-sync": {
-          "version": "0.0.16",
-          "from": "fh-wfm-sync@0.0.16",
-          "resolved": "https://registry.npmjs.org/fh-wfm-sync/-/fh-wfm-sync-0.0.16.tgz",
-          "dependencies": {
-            "rx": {
-              "version": "4.1.0",
-              "from": "rx@4.1.0",
-              "resolved": "https://registry.npmjs.org/rx/-/rx-4.1.0.tgz"
-            }
-          }
         },
         "lodash": {
           "version": "4.7.0",
@@ -4959,9 +4969,9 @@
           "resolved": "https://registry.npmjs.org/oauth-sign/-/oauth-sign-0.8.2.tgz"
         },
         "qs": {
-          "version": "6.3.0",
+          "version": "6.3.1",
           "from": "qs@>=6.3.0 <6.4.0",
-          "resolved": "https://registry.npmjs.org/qs/-/qs-6.3.0.tgz"
+          "resolved": "https://registry.npmjs.org/qs/-/qs-6.3.1.tgz"
         },
         "stringstream": {
           "version": "0.0.5",
