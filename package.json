@@ -1,6 +1,6 @@
 {
   "name": "fh-wfm-sync",
-  "version": "0.1.0-alpha.5",
+  "version": "0.1.0-alpha.6",
   "description": "An sync module for WFM",
   "main": "lib/angular/sync-ng.js",
   "repository": {
@@ -24,7 +24,7 @@
     "lodash": "4.7.0",
     "q": "1.4.1",
     "rx": "4.1.0",
-    "fh-wfm-mediator": "0.2.0-0"
+    "fh-wfm-mediator": "0.3.1-alpha.1"
   },
   "devDependencies": {
     "angular": "1.5.3",
