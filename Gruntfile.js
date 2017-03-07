@@ -48,7 +48,15 @@ module.exports = function(grunt) {
       // environment variables - see https://github.com/jsoverson/grunt-env for more information
       local: {
         FH_USE_LOCAL_DB: true,
-        WFM_USE_MEMORY_STORE: true, //Used to specify which store to be used. If true, it will use persistent store
+        WFM_USE_MEMORY_STORE: false, //Used to specify which store to be used. If false, it will use persistent store
+        FH_DOMAIN: "wfm",
+        FH_ENV: "demos-dev",
+        FH_INSTANCE: "",
+        FH_MBAAS_ENV_ACCESS_KEY: "",
+        FH_MBAAS_HOST: "api.rmadevxp1.skunkhenry.com",
+        FH_MBAAS_PROTOCOL: "http",
+        FH_WIDGET: "",
+        FH_APP_API_KEY: "",
         WFM_AUTH_GUID: "iidn3tvprs62asdebat5m3eg",
         /*
          * This is mapping to authentication service, when running raincatcher-demo-auth locally it will map to it
