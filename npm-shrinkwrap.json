@@ -1,6 +1,6 @@
 {
   "name": "wfm2",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "dependencies": {
     "bluebird": {
       "version": "3.5.0",
@@ -2598,9 +2598,9 @@
       }
     },
     "fh-wfm-sync": {
-      "version": "0.1.1-alpha.1",
-      "from": "fh-wfm-sync@0.1.1-alpha.1",
-      "resolved": "https://registry.npmjs.org/fh-wfm-sync/-/fh-wfm-sync-0.1.1-alpha.1.tgz",
+      "version": "0.1.1",
+      "from": "fh-wfm-sync@0.1.1",
+      "resolved": "https://registry.npmjs.org/fh-wfm-sync/-/fh-wfm-sync-0.1.1.tgz",
       "dependencies": {
         "lodash": {
           "version": "4.7.0",
@@ -3180,7 +3180,7 @@
         },
         "mime-types": {
           "version": "2.1.14",
-          "from": "mime-types@>=2.1.13 <2.2.0",
+          "from": "mime-types@>=2.1.7 <2.2.0",
           "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.14.tgz",
           "dependencies": {
             "mime-db": {
