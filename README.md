@@ -515,3 +515,19 @@ Check a complete example [here](https://github.com/feedhenry-staff/wfm-workorder
   }
 }
 ```
+
+##### Custom data collision handler setup
+
+A custom data collision handler can be used by the sync module by assigning your own custom collision handler function to the sync config options `syncOptions.dataCollisionHandler` property. This may be configured like the example below:
+
+```javascript
+var syncOptions = config.syncOptions;
+syncOptions.dataCollisionHandler = function() {
+  //Custom data collision handler
+};
+
+sync.init(mediator, mbaasApi, config.datasetId, syncOptions);
+```
+Check a complete example [here](https://github.com/feedhenry-raincatcher/raincatcher-demo-cloud/blob/master/lib/app.js#L66)
+
+For further information about sync data collision handlers, please refer to the  [$fh.sync documentation](https://access.redhat.com/documentation/en-us/red_hat_mobile_application_platform_hosted/3/html/cloud_api/fh-sync#fh-sync-handlecollision)
