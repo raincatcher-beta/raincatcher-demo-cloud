@@ -21,7 +21,7 @@
     "express": "4.14.0",
     "fh-mbaas-api": "~6.1.7",
     "fh-wfm-appform": "0.1.0",
-    "fh-wfm-file": "0.0.9",
+    "fh-wfm-file": "0.1.0",
     "fh-wfm-mediator": "0.3.1",
     "fh-wfm-message": "0.1.0",
     "fh-wfm-result": "0.2.0",
