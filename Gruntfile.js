@@ -58,6 +58,10 @@ module.exports = function(grunt) {
         FH_WIDGET: "",
         FH_APP_API_KEY: "",
         WFM_AUTH_GUID: "iidn3tvprs62asdebat5m3eg",
+        AWS_S3_ACCESS_KEY : "",
+        AWS_S3_ACCESS_KEY_SECRET : "",
+        AWS_S3_REGION : "eu-west-1",
+        
         /*
          * This is mapping to authentication service, when running raincatcher-demo-auth locally it will map to it
          * allowing correct authentication.
