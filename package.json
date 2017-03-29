@@ -22,6 +22,7 @@
     "fh-mbaas-api": "6.1.8",
     "fh-wfm-appform": "0.1.0",
     "fh-wfm-file": "0.1.1",
+    "fh-wfm-file-storage": "0.1.0",
     "fh-wfm-mediator": "0.3.1",
     "fh-wfm-message": "0.1.1",
     "fh-wfm-result": "0.2.1",
