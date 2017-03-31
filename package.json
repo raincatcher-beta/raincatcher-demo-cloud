@@ -21,10 +21,10 @@
   "author": "Sebastien Blanc, Brian Leathem",
   "license": "MIT",
   "dependencies": {
+    "fh-wfm-mediator": "0.3.2",
     "lodash": "4.7.0",
     "q": "1.4.1",
-    "rx": "4.1.0",
-    "fh-wfm-mediator": "0.3.1"
+    "rx": "4.1.0"
   },
   "devDependencies": {
     "angular": "1.5.3",
