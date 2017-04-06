@@ -30,7 +30,7 @@
     "fh-wfm-user": "0.6.0",
     "fh-wfm-workflow": "0.2.2",
     "fh-wfm-workorder": "0.2.2",
-    "fh-wfm-sync": "aidenkeating/raincatcher-sync#RAINCATCH-708",
+    "fh-wfm-sync-2": "aidenkeating/raincatcher-sync#RAINCATCH-708",
     "http-status-codes": "1.0.6",
     "lodash": "4.17.4",
     "q": "1.4.1",
