@@ -18,7 +18,7 @@
     "body-parser": "1.17.1",
     "config-chain": "1.1.10",
     "cors": "2.7.1",
-    "debug": "^2.6.3",
+    "debug": "2.6.3",
     "express": "4.15.2",
     "fh-mbaas-api": "6.1.8",
     "fh-wfm-appform": "0.1.0",
