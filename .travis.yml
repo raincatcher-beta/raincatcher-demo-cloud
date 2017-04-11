@@ -9,7 +9,9 @@ node_js:
   - '4.4'
 script:
   - npm test
-  - bash <(curl https://gist.githubusercontent.com/raincatcher-bot/01ac4cdb3b0770bdb58489dbc17ed6b6/raw/6205a628c3616f6736fd866d5f0fba0a781ec1e4/sonarqube.sh)
+  - >-
+    bash <(curl
+    https://gist.githubusercontent.com/raincatcher-bot/01ac4cdb3b0770bdb58489dbc17ed6b6/raw/6205a628c3616f6736fd866d5f0fba0a781ec1e4/sonarqube.sh)
 before_install:
   - npm install grunt-cli -g
 install: npm install
@@ -22,3 +24,6 @@ notifications:
       secure: >-
         MVwI/dpW5Un4v36oCtFgmSXrlbRMxgx6D5gYC9YPelYhvtDb6kKpJe/pMYxNOY6GB6jQxwiVgiYyQF/RA4Qjn24XsMZmhxI+yJdpbaF1rXFDs0YfhZ0+cBh7zWzXAjDG8a+yXaBH9XzWo3izhKAN9bHT2rBuQTIkVou+S4letm6tZnzXxqKoaDXlvQc2JgT5kuItp1YDaL+yJxXjhffc8wAl4sVIWSxFtI/L+tgExWU8LPZ5fkllZY9JVqBo+I3+xI9SaPH8F+lHJff+uy9JRlcSEIhz3k0OkqGaVolwqN7sLf/DaUpUp0WXboOUfFGQWFk9C/gcWRAg0QE7ZdperYoKa3JCkI9aFkQhq2NEqcWSVxbDh2jLJlMtOwstxreICAzY2s6XwB55Jye7St35xfnc72Ll7pisDHZ4TnzQnk791k1Twq/Q8spnKI02bMiT2dHGBYdB8L9Ix9rRPrYQkWYa9oxJWlHcYcLhM/EOPEfR/5UQPcfTT/Udw9j9m7TH0MXTMs/l4L0pzhKvRrAMfiVpgL0zch3BlJu4Ai1o1TYKfAJkAIwl2b+D+ls7Lo9diYueHJsm/zfEXqo+tYO9BNyWFgFYssp1URwk9GZl8tKNKFzwq1v5IirtHBeVJsiLxTJr+3DhxsEYvtbOnJfW1CxMDqKo3pGs357E1F5ABxY=
     on_pull_requests: false
+cache:
+  directories:
+    - node_modules
