@@ -49,16 +49,21 @@ module.exports = function(grunt) {
       local: {
         FH_USE_LOCAL_DB: true,
         WFM_USE_MEMORY_STORE: false, //Used to specify which store to be used. If false, it will use persistent store
-        FH_DOMAIN: "wfm",
-        FH_ENV: "demos-dev",
-        FH_INSTANCE: "",
-        FH_MBAAS_ENV_ACCESS_KEY: "",
-        FH_MBAAS_HOST: "api.rmadevxp1.skunkhenry.com",
-        FH_MBAAS_PROTOCOL: "http",
-        FH_WIDGET: "",
-        FH_APP_API_KEY: "",
-        WFM_AUTH_GUID: "iidn3tvprs62asdebat5m3eg",
-        FH_MONGODB_CONN_URL:"mongodb://localhost/raincatcher",
+        FH_MONGODB_CONN_URL: "mongodb://localhost/raincatch",
+        WFM_AUTH_GUID: 'v5ay3ztx6adgquvf2analme6',
+        WFM_AUTH_POLICY_ID: 'wfm',
+        FH_MBAAS_ENV_ACCESS_KEY:	"5874d992e8d52688532911af",
+        FH_MBAAS_HOST:	"mbaas.mbaas1.eu.feedhenry.com",
+        FH_MBAAS_ID:	"ema1-mbaas1",
+        FH_MBAAS_PROTOCOL:	"https",
+        FH_MBAAS_TYPE:	"feedhenry",
+        FH_SKIP_MBAAS_AUTH: true,
+        FH_INSTANCE: "r55tw36wqrhdxc7oviaepzk7",
+        FH_WIDGET: "r55tw32dfwsdtv3tfxqvxcht",
+        FH_DOMAIN: "testing",
+        FH_ENV: "dev",
+        FH_APPNAME: "testing-r55tw36wqrhdxc7oviaepzk7-dev",
+        FH_APP_API_KEY: "d305e5bafa5a8a22656b0a46d7b60d043210a238",
         /*
          * This is mapping to authentication service, when running raincatcher-demo-auth locally it will map to it
          * allowing correct authentication.
@@ -71,7 +76,7 @@ module.exports = function(grunt) {
            * or a remote instance.
            */
           var serviceMap = {
-            'iidn3tvprs62asdebat5m3eg': 'http://localhost:8002'
+            'v5ay3ztx6adgquvf2analme6': 'http://localhost:8002'
           };
           return JSON.stringify(serviceMap);
         }
