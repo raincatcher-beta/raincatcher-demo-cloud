@@ -58,7 +58,8 @@ module.exports = function(grunt) {
         FH_WIDGET: "",
         FH_APP_API_KEY: "",
         WFM_AUTH_GUID: "iidn3tvprs62asdebat5m3eg",
-  
+        FH_MONGODB_CONN_URL:"mongodb://localhost/raincatcher",
+
         /*
          * This is mapping to authentication service, when running raincatcher-demo-auth locally it will map to it
          * allowing correct authentication.
@@ -182,9 +183,6 @@ module.exports = function(grunt) {
   grunt.registerTask('coverage', ['shell:coverage_unit', 'shell:coverage_accept']);
   grunt.registerTask('coverage-unit', ['shell:coverage_unit']);
   grunt.registerTask('coverage-accept', ['env:local', 'shell:coverage_accept']);
-
-  // Making grunt default to force in order not to break the project.
-  grunt.option('force', true);
 
   grunt.registerTask('analysis', ['plato:src', 'open:platoReport']);
 
