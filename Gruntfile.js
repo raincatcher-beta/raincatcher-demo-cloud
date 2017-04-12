@@ -59,7 +59,7 @@ module.exports = function(grunt) {
         FH_APP_API_KEY: "",
         WFM_AUTH_GUID: "iidn3tvprs62asdebat5m3eg",
         FH_MONGODB_CONN_URL:"mongodb://localhost/raincatcher",
-        
+
         /*
          * This is mapping to authentication service, when running raincatcher-demo-auth locally it will map to it
          * allowing correct authentication.
@@ -166,26 +166,26 @@ module.exports = function(grunt) {
       }
     }
   });
-  
+
   // Load NPM tasks
   require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-eslint');
-  
+
   // Testing tasks
   grunt.registerTask('test', ['shell:unit', 'shell:accept']);
   grunt.registerTask('mocha', ['mochaTest']);
   grunt.registerTask('unit', ['eslint', 'mocha']);
-  
+
   grunt.registerTask('accept', ['env:local', 'shell:accept']);
-  
+
   // Coverate tasks
   grunt.registerTask('coverage', ['shell:coverage_unit', 'shell:coverage_accept']);
   grunt.registerTask('coverage-unit', ['shell:coverage_unit']);
   grunt.registerTask('coverage-accept', ['env:local', 'shell:coverage_accept']);
-  
+
   grunt.registerTask('analysis', ['plato:src', 'open:platoReport']);
-  
+
   grunt.registerTask('serve', ['env:local', 'concurrent:serve']);
   grunt.registerTask('debug', ['env:local', 'concurrent:debug']);
   grunt.registerTask('default', ['serve']);
