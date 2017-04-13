@@ -1,4 +1,6 @@
-# FeedHenry RainCatcher Cloud [![Build Status](https://travis-ci.org/feedhenry-raincatcher/raincatcher-demo-cloud.png)](https://travis-ci.org/feedhenry-raincatcher/raincatcher-demo-cloud)
+# FeedHenry RainCatcher Cloud 
+[![Dependency Status](https://img.shields.io/david/feedhenry-raincatcher/raincatcher-demo-cloud.svg?style=flat-square)](https://david-dm.org/feedhenry-raincatcher/raincatcher-demo-cloud)
+[![Build Status](https://travis-ci.org/feedhenry-raincatcher/raincatcher-demo-cloud.png)](https://travis-ci.org/feedhenry-raincatcher/raincatcher-demo-cloud)
 
 This is a reference/demo implementation of the cloud application of a RainCatcher project.  
 
