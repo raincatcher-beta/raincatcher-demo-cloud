@@ -13,5 +13,9 @@ app().then(function(app) {
   server.listen(port, ip, function() {
     console.log("App started at: " + new Date() + " on port: " + port);
   });
+}).catch(function(err) {
+  //There was an error setting up the application.
+  //Log the error but don't start the server.
+  console.error("Error starting app ", err);
 });
 
