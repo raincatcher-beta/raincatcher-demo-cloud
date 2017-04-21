@@ -31,7 +31,7 @@
     "fh-wfm-workflow": "0.2.3",
     "fh-wfm-workorder": "0.2.3",
     "fh-wfm-sync": "0.3.1",
-    "fh-wfm-mongoose-store": "0.4.1",
+    "fh-wfm-mongoose-store": "0.4.3",
     "http-status-codes": "1.0.6",
     "lodash": "4.17.4",
     "q": "1.4.1",
