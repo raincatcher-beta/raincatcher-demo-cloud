@@ -5,7 +5,7 @@
 This is a reference/demo implementation of the cloud application of a RainCatcher project.  
 
 
-This repository should be used in conjonction with these following repos :
+This repository should be used in conjunction with these following repos :
 
 - [Portal Demo App](https://github.com/feedhenry-raincatcher/raincatcher-demo-portal)
 - [Mobile Client Demo App](https://github.com/feedhenry-raincatcher/raincatcher-demo-mobile)
