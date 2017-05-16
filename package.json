@@ -1,6 +1,6 @@
 {
   "name": "fh-wfm-demo-cloud",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "A WFM2 PoC using the mediator pattern",
   "repository": "https://github.com/feedhenry-raincatcher/raincatcher-demo-cloud.git",
   "main": "application.js",
@@ -20,7 +20,7 @@
     "cors": "2.7.1",
     "debug": "2.6.3",
     "express": "4.15.2",
-    "fh-mbaas-api": "~7.0.1",
+    "fh-mbaas-api": "7.0.8",
     "fh-wfm-file": "0.4.0",
     "fh-wfm-mediator": "0.3.4",
     "fh-wfm-mongoose-store": "0.4.5",
