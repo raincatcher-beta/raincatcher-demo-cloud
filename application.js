@@ -4,18 +4,20 @@ var app = require('./lib/app.js')
   , http = require('http')
   ;
 
+
+
 //Make sure all app modules are finished setting up before listening.
 app().then(function(app) {
+
   var server = http.createServer(app);
   var port  = app.get('port'),
     ip = app.get('base url');
-
   server.listen(port, ip, function() {
     console.log("App started at: " + new Date() + " on port: " + port);
   });
 }).catch(function(err) {
   //There was an error setting up the application.
   //Log the error but don't start the server.
-  console.error("Error starting app ", err);
+  console.error("Error starting app ", err, err.stack);
 });
 

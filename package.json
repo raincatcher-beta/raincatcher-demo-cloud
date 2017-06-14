@@ -30,6 +30,7 @@
     "fh-wfm-user": "1.0.0-pre.2",
     "fh-wfm-workflow": "1.0.0-pre.1",
     "fh-wfm-workorder": "1.0.0-pre.1",
+    "raincatcher-google-sheet-store": "0.1.1",
     "http-status-codes": "1.0.6",
     "lodash": "4.17.4",
     "mongodb": "^2.2.26",

@@ -77,7 +77,8 @@ module.exports = function(grunt) {
            * or a remote instance.
            */
           var serviceMap = {
-            'iidn3tvprs62asdebat5m3eg': 'http://localhost:8002'
+            'iidn3tvprs62asdebat5m3eg': 'http://localhost:8002',
+            'iidn3tvprs62asdebat5m3eh': 'http://localhost:8005'
           };
           return JSON.stringify(serviceMap);
         }
