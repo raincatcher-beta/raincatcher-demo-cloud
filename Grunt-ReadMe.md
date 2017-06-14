@@ -19,15 +19,9 @@ Note that 'grunt serve' supports live reload, i.e. it will monitor for any chang
 
 Run ```grunt debug``` to debug this App locally. This task uses [Node Inspector](https://github.com/node-inspector/node-inspector) to debug your application, and will open the Debugger at 'application.js' in Google Chrome. See the documentation for [Node Inspector](https://github.com/node-inspector/node-inspector) for more information on how to use Node Inspector.
 
-## grunt test
+## grunt unit
 
-Run ```grunt test``` to run the unit tests for this App.
-
-## grunt coverage
-
-This App uses [Istanbul](https://github.com/gotwarlost/istanbul) for generating code coverage for your tests.
-
-Run ```grunt coverage``` to run code coverage for this App.
+Run ```grunt unit``` to run the unit tests for this App.
 
 ## grunt analysis
 
