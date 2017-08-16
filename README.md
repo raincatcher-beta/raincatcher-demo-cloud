@@ -2,6 +2,8 @@
 [![Dependency Status](https://img.shields.io/david/feedhenry-raincatcher/raincatcher-demo-cloud.svg?style=flat-square)](https://david-dm.org/feedhenry-raincatcher/raincatcher-demo-cloud)
 [![Build Status](https://travis-ci.org/feedhenry-raincatcher/raincatcher-demo-cloud.png)](https://travis-ci.org/feedhenry-raincatcher/raincatcher-demo-cloud)
 
+> *Note:* This repository is no longer used. All active development was moved to new [raincatcher-core](https://github.com/feedhenry-raincatcher/raincatcher-core) repository.
+
 This is a reference/demo implementation of the cloud application of a RainCatcher project.  
 
 
